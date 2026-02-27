@@ -376,10 +376,15 @@ exports.handler = async (event) => {
     };
 
     // Diagnostic checks handled quietly
+    console.log("[midi-search] Function invoked.");
+    console.log(`[midi-search] LAKH_GCS_BUCKET_NAME: ${process.env.LAKH_GCS_BUCKET_NAME}`);
+    console.log(`[midi-search] LAKH_GCS_PUBLIC_BASE_URL: ${process.env.LAKH_GCS_PUBLIC_BASE_URL}`);
 
     const query = (event.queryStringParameters?.q || '').trim();
+    console.log(`[midi-search] Query: "${query}"`);
 
     const pool = getSongPool();
+    console.log(`[midi-search] Song pool size: ${pool.length}`);
 
     // No query → return 18 curated "featured" picks for the home screen
     if (!query) {
