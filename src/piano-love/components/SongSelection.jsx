@@ -318,7 +318,9 @@ const SongSelection = ({
     isSearching,
     selectedSong,
     handleSelectSong,
-    runSearch
+    runSearch,
+    isFetchingMidi,
+    fetchingSongId
 }) => {
     const [activeChip, setActiveChip] = React.useState("Top Picks");
     const [isTopPicksFallback, setIsTopPicksFallback] = React.useState(false);
@@ -448,13 +450,19 @@ const SongSelection = ({
                                     type="button"
                                     className={`ss-item${selectedSong?.id === item.id ? " selected" : ""}`}
                                     onClick={() => handleSelectSong(item)}
+                                    disabled={isFetchingMidi}
+                                    style={{ opacity: isFetchingMidi && fetchingSongId !== item.id ? 0.6 : 1 }}
                                 >
                                     <span className="ss-item-num">{i + 1}</span>
                                     <div className="ss-item-body">
                                         <p className="ss-item-title">{item.title}</p>
                                         <p className="ss-item-artist">{item.artist || "Unknown Artist"}</p>
                                     </div>
-                                    <CheckCircle2 size={17} className="ss-item-check" />
+                                    {fetchingSongId === item.id ? (
+                                        <Loader2 size={17} className="ss-spin" />
+                                    ) : (
+                                        <CheckCircle2 size={17} className="ss-item-check" />
+                                    )}
                                 </button>
                             ))
                         )}

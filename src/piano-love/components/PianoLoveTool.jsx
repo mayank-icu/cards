@@ -28,6 +28,8 @@ function PianoLoveTool() {
   const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [selectedSong, setSelectedSong] = useState(null);
+  const [isFetchingMidi, setIsFetchingMidi] = useState(false);
+  const [fetchingSongId, setFetchingSongId] = useState(null);
 
   const [easyMode, setEasyMode] = useState(false);
 
@@ -267,6 +269,8 @@ function PianoLoveTool() {
   const handleSelectSong = useCallback(async (item) => {
     try {
       toast.dismiss();
+      setIsFetchingMidi(true);
+      setFetchingSongId(item.id);
       const response = await fetch(item.midiUrl);
       if (!response.ok) throw new Error(`Could not load MIDI (${response.status}).`);
       const data = await response.arrayBuffer();
@@ -277,6 +281,9 @@ function PianoLoveTool() {
       }, null, recordDurationMs);
     } catch (error) {
       toast.error(error.message || 'Failed to load this song.');
+    } finally {
+      setIsFetchingMidi(false);
+      setFetchingSongId(null);
     }
   }, [loadMidiFromArrayBuffer, recordDurationMs]);
 
@@ -463,6 +470,8 @@ function PianoLoveTool() {
             selectedSong={selectedSong}
             handleSelectSong={handleSelectSong}
             runSearch={runSearch}
+            isFetchingMidi={isFetchingMidi}
+            fetchingSongId={fetchingSongId}
             fullscreen={isFullscreenStep}
           />
         )}
