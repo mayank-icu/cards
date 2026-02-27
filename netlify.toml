@@ -52,6 +52,3 @@
   from = "/*"
   to = "/index.html"
   status = 200
-  force = false
-  [redirects.conditions]
-    User-Agent = ["!googlebot", "!bingbot", "!yandex", "!baiduspider", "!slurp", "!duckduckbot", "!facebookexternalhit", "!twitterbot", "!linkedinbot", "!whatsapp"]
