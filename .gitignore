@@ -30,3 +30,4 @@ dist-ssr
 lmd_matched/
 md5_to_paths.json
 data/lmd_search_index.json
+midi/

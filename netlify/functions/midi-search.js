@@ -14,232 +14,50 @@
 const fs = require('fs');
 const path = require('path');
 
-// ── Curated song library ──────────────────────────────────────────────────────
-const SONGS = [
-    // Tier 1 – Universal Piano Classics
-    { id: 'universal-01', title: 'Perfect', artist: 'Ed Sheeran', folder: 'universal', file: 'Ed-Sheeran-Perfect-Midi-File.mid.mid' },
-    { id: 'universal-02', title: 'Someone You Loved', artist: 'Lewis Capaldi', folder: 'universal', file: 'Lewis Capaldi - Someone You Loved.mid.mid' },
-    { id: 'universal-03', title: 'Let Her Go', artist: 'Passenger', folder: 'universal', file: 'Let Her Go - Passenger [MIDICollection.net].mid.mid' },
-    { id: 'universal-04', title: 'All of Me', artist: 'John Legend', folder: 'universal', file: 'John Legend - All of Me - Pianoitall.mid.mid' },
-    { id: 'universal-05', title: 'River Flows in You', artist: 'Yiruma', folder: 'universal', file: 'River Flows in You - Yiruma [MIDICollection.net] (1).mid.mid' },
-    { id: 'universal-06', title: 'A Thousand Years', artist: 'Christina Perri', folder: 'universal', file: 'Christina Perri - A Thousand Years.mid' },
-    { id: 'universal-07', title: 'Thinking Out Loud', artist: 'Ed Sheeran', folder: 'universal', file: 'Ed Sheeran - Thinking Out Loud.mid.mid' },
-    { id: 'universal-08', title: 'Hallelujah', artist: 'Leonard Cohen', folder: 'universal', file: 'Leonard Cohen - Hallelujah.mid.mid' },
-    { id: 'universal-09', title: 'My Heart Will Go On', artist: 'Celine Dion', folder: 'universal', file: 'My Heart Will Go On - Titanic.mid' },
-    { id: 'universal-10', title: 'Imagine', artist: 'John Lennon', folder: 'universal', file: 'Imagine - John Lennon.mid' },
+const fs = require('fs');
+const path = require('path');
 
-    // Tier 2 – Modern Mega Hits
-    { id: 'modern-01', title: 'Blinding Lights', artist: 'The Weeknd', folder: 'modern', file: 'Blinding Lights- The Weeknd.mid' },
-    { id: 'modern-02', title: 'Shape of You', artist: 'Ed Sheeran', folder: 'modern', file: 'Ed Sheeran - Shape of You (midi by Carlo Prato) (www.cprato.com).mid.mid' },
-    { id: 'modern-03', title: 'Stay', artist: 'The Kid LAROI & Justin Bieber', folder: 'modern', file: 'The Kid LAROI & Justin Bieber - Stay.mid' },
-    { id: 'modern-04', title: 'As It Was', artist: 'Harry Styles', folder: 'modern', file: 'As it was by Harry Styles.mid' },
-    { id: 'modern-05', title: 'Heat Waves', artist: 'Glass Animals', folder: 'modern', file: 'Glass Animals - Heat Waves.mid' },
-    { id: 'modern-06', title: 'Sunflower', artist: 'Post Malone & Swae Lee', folder: 'modern', file: '[SPIDERMAN] SUNFLOWER -POST MALONE, SWAE LEE.mid' },
-    { id: 'modern-07', title: 'Counting Stars', artist: 'OneRepublic', folder: 'modern', file: 'OneRepublic - Counting Stars.mid.mid' },
-    { id: 'modern-08', title: 'Closer', artist: 'The Chainsmokers ft. Halsey', folder: 'modern', file: 'The Chainsmokers ft. Halsey- Closer[PIANO]MIDI.mid.mid' },
-    { id: 'modern-09', title: 'Love Yourself', artist: 'Justin Bieber', folder: 'modern', file: 'Love Yourself - Justin Bieber.mid.mid' },
-    { id: 'modern-10', title: 'Señorita', artist: 'Shawn Mendes & Camila Cabello', folder: 'modern', file: 'Señorita- Shawn Mendes, Camila Cabello.mid' },
+// ── Remote song library ──────────────────────────────────────────────────────
+const SONGS_JSON_URL = "https://cdn.jsdelivr.net/gh/mayank-icu/midi@main/songs.json";
 
-    // Tier 3 – Emotional / Romantic
-    { id: 'emotional-01', title: 'Until I Found You', artist: 'Stephen Sanchez', folder: 'emotional', file: 'Stephen Sanchez - Until I found You.mid' },
-    { id: 'emotional-02', title: 'Say You Won\'t Let Go', artist: 'James Arthur', folder: 'emotional', file: 'James Arthur - Say You Won\'t Let Go.mid' },
-    { id: 'emotional-03', title: 'Photograph', artist: 'Ed Sheeran', folder: 'emotional', file: 'Ed Sheeran - Photograph (Pro).mid.mid' },
-    { id: 'emotional-04', title: 'Drivers License', artist: 'Olivia Rodrigo', folder: 'emotional', file: 'Olivia Rodrigo - drivers license FREE MIDI BY WHISPERING PIANO.mid' },
-    { id: 'emotional-05', title: 'Arcade', artist: 'Duncan Laurence', folder: 'emotional', file: 'Duncan Laurence - Arcade.mid' },
-    { id: 'emotional-06', title: 'Easy On Me', artist: 'Adele', folder: 'emotional', file: 'Easy On Me by Adele.mid' },
-    { id: 'emotional-07', title: 'When I Was Your Man', artist: 'Bruno Mars', folder: 'emotional', file: 'Bruno Mars - When I Was Your Man.mid' },
-    { id: 'emotional-08', title: 'Stay With Me', artist: 'Sam Smith', folder: 'emotional', file: 'Stay With Me - Sam Smith - Piano Cover Video by YourPianoCover.mid.mid' },
-    { id: 'emotional-09', title: 'Night Changes', artist: 'One Direction', folder: 'emotional', file: 'Night Changes - One Direction.mid' },
-    { id: 'emotional-10', title: 'Fix You', artist: 'Coldplay', folder: 'emotional', file: 'Fix You - Coldplay 39.mid.mid' },
+let CACHED_SONGS = null;
+let LAST_FETCH_TIME = 0;
+const CACHE_TTL = 300000; // 5 minutes
 
-    // Tier 4 – Viral Hits
-    { id: 'hits-01', title: 'Believer', artist: 'Imagine Dragons', folder: 'hits', file: 'Believer - Imagine Dragons .mid.mid' },
-    { id: 'hits-02', title: 'Faded', artist: 'Alan Walker', folder: 'hits', file: 'Alan Walker - Faded (IMPOSSIBLE BLACK MIDI) .mid' },
-    { id: 'hits-03', title: 'Memories', artist: 'Maroon 5', folder: 'hits', file: 'Maroon 5 - Memories MIDI FILE.mid.mid' },
-    { id: 'hits-04', title: 'Titanium', artist: 'David Guetta ft. Sia', folder: 'hits', file: 'Titanium- David Guetta.mid' },
-    { id: 'hits-05', title: 'Bad Guy', artist: 'Billie Eilish', folder: 'hits', file: 'bad guy - Billie Eilish (Piano Cover) - MIDI.mid.mid' },
-    { id: 'hits-06', title: 'Lovely', artist: 'Billie Eilish & Khalid', folder: 'hits', file: 'Billie Eilish ft. Khalid - Lovely.mid.mid' },
-    { id: 'hits-07', title: 'Radioactive', artist: 'Imagine Dragons', folder: 'hits', file: 'RADIOACTIVE- Imagine Dragons.mid' },
-    { id: 'hits-08', title: 'Viva La Vida', artist: 'Coldplay', folder: 'hits', file: 'Coldplay - Viva La Vida.mid' },
-    { id: 'hits-09', title: 'Paradise', artist: 'Coldplay', folder: 'hits', file: 'coldplay-paradise.mid.mid' },
+const fetchSongs = async () => {
+    const now = Date.now();
+    if (CACHED_SONGS && (now - LAST_FETCH_TIME < CACHE_TTL)) {
+        return CACHED_SONGS;
+    }
 
-    // Tier 5 – Movie & Soundtracks
-    { id: 'movie-01', title: 'Interstellar Theme', artist: 'Hans Zimmer', folder: 'movie', file: 'Hans Zimmer - Interstellar main theme.mid' },
-    { id: 'movie-02', title: 'Pirates of the Caribbean Theme', artist: 'Hans Zimmer', folder: 'movie', file: '_Pirates of the Caribbean Theme (Full).mid' },
-    { id: 'movie-03', title: "Harry Potter Theme (Hedwig's Theme)", artist: 'John Williams', folder: 'movie', file: "Harry Potter- Hedwig's theme.mid" },
-    { id: 'movie-04', title: 'Time', artist: 'Hans Zimmer', folder: 'movie', file: 'Hans-Zimmer-Time-Inception Michael.mid.mid' },
-    { id: 'movie-05', title: 'Cornfield Chase', artist: 'Hans Zimmer', folder: 'movie', file: 'Theme of Interstellar - Cornfield Chase___WWW.MIDISFREE.COM.mid.mid' },
-    { id: 'movie-06', title: 'Married Life', artist: 'Up (Michael Giacchino)', folder: 'movie', file: 'Disney-Pixars-Up-Married-Life-Main-Theme.mid.mid' },
-    { id: 'movie-07', title: 'City of Stars', artist: 'La La Land', folder: 'movie', file: 'City of Stars (OST La La Land).mid.mid' },
-    { id: 'movie-08', title: "Mia & Sebastian's Theme", artist: 'La La Land', folder: 'movie', file: "Mia & Sebastian's Theme (La La Land Soundtrack).mid" },
-    { id: 'movie-09', title: 'Can You Feel the Love Tonight', artist: 'Elton John', folder: 'movie', file: 'Can You Feel The Love Tonight.mid' },
-    { id: 'movie-10', title: 'Let It Go', artist: 'Frozen', folder: 'movie', file: 'Frozen - Let it Go.mid' },
-
-    // Tier 6 – Pop Icons
-    { id: 'pop-01', title: 'Blank Space', artist: 'Taylor Swift', folder: 'pop-icon', file: 'Taylor Swift - Blank Space - Pianoitall.mid.mid' },
-    { id: 'pop-02', title: 'Love Story', artist: 'Taylor Swift', folder: 'pop-icon', file: 'taylor swift -love story[ic3zz86].mid.mid' },
-    { id: 'pop-03', title: 'Anti-Hero', artist: 'Taylor Swift', folder: 'pop-icon', file: 'the Taylor Swift- Anti-Hero.mid' },
-    { id: 'pop-04', title: 'Flowers', artist: 'Miley Cyrus', folder: 'pop-icon', file: 'Flowers - Miley Cyrus.mid' },
-    { id: 'pop-05', title: 'Levitating', artist: 'Dua Lipa', folder: 'pop-icon', file: 'Levitating- Dua Lipa.mid' },
-    { id: 'pop-06', title: 'Rolling in the Deep', artist: 'Adele', folder: 'pop-icon', file: '(Adele) Rolling in the Deep.mid .mid' },
-    { id: 'pop-07', title: 'Hello', artist: 'Adele', folder: 'pop-icon', file: 'Adele - Hello.mid.mid' },
-    { id: 'pop-08', title: 'Someone Like You', artist: 'Adele', folder: 'pop-icon', file: 'adele - someone like you[ic3zz86].mid.mid' },
-    { id: 'pop-09', title: 'Watermelon Sugar', artist: 'Harry Styles', folder: 'pop-icon', file: 'Watermelon Sugar - Harry Styles.mid' },
-    { id: 'pop-10', title: 'Shallow', artist: 'Lady Gaga & Bradley Cooper', folder: 'pop-icon', file: 'Lady Gaga, Bradley Cooper - Shallow (A Star Is Born).mid.mid' },
-
-    // Tier 7 – 2023-2026 Modern Hits
-    { id: 'new-01', title: 'Espresso', artist: 'Sabrina Carpenter', folder: '2023-26_modern-hits', file: 'Espresso - Sabrina Carpenter.mid' },
-    { id: 'new-02', title: 'Birds of a Feather', artist: 'Billie Eilish', folder: '2023-26_modern-hits', file: 'BIRDS OF A FEATHER - Billie Eilish.mid' },
-    { id: 'new-03', title: 'Die With a Smile', artist: 'Lady Gaga & Bruno Mars', folder: '2023-26_modern-hits', file: 'Debra_Bruno Mars Lady Gaga - Die With a Smile.mid' },
-    { id: 'new-04', title: 'Fortnight', artist: 'Taylor Swift ft. Post Malone', folder: '2023-26_modern-hits', file: 'Fortnight-Taylor Swift ft. Post Malone.mid' },
-    { id: 'new-05', title: 'End of Beginning', artist: 'Djo', folder: '2023-26_modern-hits', file: 'End of Beginning- Djo.mid' },
-    { id: 'new-06', title: 'Greedy', artist: 'Tate McRae & Ariana Grande', folder: '2023-26_modern-hits', file: 'Tate McRae & Ariana Grande (greedy).mid' },
-    { id: 'new-07', title: 'Paint The Town Red', artist: 'Doja Cat', folder: '2023-26_modern-hits', file: 'Paint The Town Red  - Doja Cat (WiP).mid' },
-    { id: 'new-08', title: 'Golden Hour', artist: 'JVKE', folder: '2023-26_modern-hits', file: 'golden hour - jvke.mid.mid' },
-    { id: 'new-09', title: 'Calm Down', artist: 'Rema', folder: '2023-26_modern-hits', file: 'Calm Down.mid' },
-    { id: 'new-10', title: 'Cupid', artist: 'FIFTY FIFTY', folder: '2023-26_modern-hits', file: 'Cupid – FIFTY FIFTY (Twin Ver.).mid.mid' },
-
-    // Tier 9 – Timeless Legends
-    { id: 'timeless-01', title: 'Bohemian Rhapsody', artist: 'Queen', folder: 'timeless', file: 'Queen - Bohemian Rhapsody.mid' },
-    { id: 'timeless-02', title: 'Billie Jean', artist: 'Michael Jackson', folder: 'timeless', file: 'Billie Jean-Michael Jackson.mid' },
-    { id: 'timeless-03', title: 'Hotel California', artist: 'Eagles', folder: 'timeless', file: 'THE EAGLES.Hotel California K.mid.mid' },
-    { id: 'timeless-04', title: "Sweet Child O' Mine", artist: "Guns N' Roses", folder: 'timeless', file: "Guns N Roses - Sweet Child O' Mine.mid" },
-    { id: 'timeless-05', title: 'Yesterday', artist: 'The Beatles', folder: 'timeless', file: 'THE BEATLES.Yesterday K.mid' },
-    { id: 'timeless-06', title: 'Hey Jude', artist: 'The Beatles', folder: 'timeless', file: 'The Beatles - Hey Jude.mid' },
-    { id: 'timeless-07', title: 'Take On Me', artist: 'a-ha', folder: 'timeless', file: 'Take on Me - a-ha.mid' },
-    { id: 'timeless-08', title: 'Careless Whisper', artist: 'George Michael', folder: 'timeless', file: 'George Michael - Careless Whisper.mid.mid' },
-    { id: 'timeless-09', title: "Can't Help Falling in Love", artist: 'Elvis Presley', folder: 'timeless', file: "can't help falling in love - elvis presley.mid.mid" },
-    { id: 'timeless-10', title: 'Stand By Me', artist: 'Ben E. King', folder: 'timeless', file: 'Ben E. King - Stand By Me.mid' },
-
-    // Tier 10 – Proposal / Love Moments
-    { id: 'love-01', title: 'Just the Way You Are', artist: 'Bruno Mars', folder: 'love', file: 'Just The Way You Are - Bruno Mars.mid' },
-    { id: 'love-02', title: "I'm Yours", artist: 'Jason Mraz', folder: 'love', file: "I'm Yours - Jason Mraz.mid" },
-    { id: 'love-03', title: 'Yellow', artist: 'Coldplay', folder: 'love', file: 'Yellow- Coldplay.mid' },
-    { id: 'love-04', title: 'Lover', artist: 'Taylor Swift', folder: 'love', file: 'lover-taylor-swift.mid' },
-    { id: 'love-05', title: 'Make You Feel My Love', artist: 'Adele', folder: 'love', file: 'Make You Feel My Love by Adele.mid' },
-    { id: 'love-06', title: 'Rewrite the Stars', artist: 'The Greatest Showman', folder: 'love', file: 'Rewrite The Stars.mid' },
-    { id: 'love-07', title: 'Falling', artist: 'Harry Styles', folder: 'love', file: 'falling_harry-styles.mid' },
-    { id: 'love-08', title: 'Perfect', artist: 'Ed Sheeran', folder: 'universal', file: 'Ed-Sheeran-Perfect-Midi-File.mid.mid' },
-    { id: 'love-09', title: 'All of Me', artist: 'John Legend', folder: 'universal', file: 'all of me.mid' },
-    { id: 'love-10', title: 'A Thousand Years', artist: 'Christina Perri', folder: 'universal', file: 'a-thousand-years.mid' },
-    { id: 'love-11', title: 'Photograph', artist: 'Ed Sheeran', folder: 'emotional', file: 'Ed Sheeran - Photograph (Pro).mid.mid' },
-    { id: 'love-12', title: 'Until I Found You', artist: 'Stephen Sanchez', folder: 'emotional', file: 'Stephen Sanchez - Until I found You.mid' },
-    { id: 'love-13', title: 'Say You Won\'t Let Go', artist: 'James Arthur', folder: 'emotional', file: 'James Arthur - Say You Won\'t Let Go.mid' },
-
-    // Multi-language / Anime
-    { id: 'multi-01', title: 'Stay With Me', artist: 'Goblin OST', folder: 'multi-lang', file: '41574_Stay-with-me.mid' },
-    { id: 'multi-02', title: 'Sparkle', artist: 'Radwimps (Your Name)', folder: 'multi-lang', file: 'Kimi no Na wa - Sparkle (Piano).mid.mid' },
-    { id: 'multi-03', title: 'Blue Bird', artist: 'Naruto Shippuden', folder: 'multi-lang', file: 'Naruto Shippuuden - Blue Bird.mid.mid' },
-
-    // Newly added hits (new1)
-    { id: 'new1-01', title: 'Sweater Weather', artist: 'The Neighbourhood', folder: 'new1', file: '(Play!) The Neighbourhood-Sweater Weather.mid.mid' },
-    { id: 'new1-02', title: 'Human', artist: 'Rag\'n\'Bone Man', folder: 'new1', file: '(Setie Lhea) Rag\'n\'Bone Man - Human.mid.mid' },
-    { id: 'new1-03', title: '7 Years', artist: 'Lukas Graham', folder: 'new1', file: '7 Years - Lukas Graham - Pianoitall.mid.mid' },
-    { id: 'new1-04', title: 'Angel Baby', artist: 'Troye Sivan', folder: 'new1', file: '70338_Angel-Baby-.mid' },
-    { id: 'new1-05', title: 'All The Stars', artist: 'Kendrick Lamar Ft Sza', folder: 'new1', file: 'All The Stars - By Kendrick Lamar Ft Sza.mid' },
-    { id: 'new1-06', title: 'How You Like That', artist: 'BLACKPINK', folder: 'new1', file: 'BLACKPINK - HOW YOU LIKE THAT.mid' },
-    { id: 'new1-07', title: 'Dynamite', artist: 'BTS', folder: 'new1', file: 'BTS Dynamite.mid' },
-    { id: 'new1-08', title: 'Butter', artist: 'BTS', folder: 'new1', file: 'BUTTER - BTS.mid' },
-    { id: 'new1-09', title: 'Pompeii', artist: 'Bastille', folder: 'new1', file: 'Bastille - Pompeii.mid' },
-    { id: 'new1-10', title: 'Beautiful Things', artist: 'Benson Boone', folder: 'new1', file: 'Beautiful Things - Benson Boone.mid' },
-    { id: 'new1-11', title: 'Piano Man', artist: 'Billy Joel', folder: 'new1', file: 'Billy Joel - Piano Man - Instrumental .mid.mid' },
-    { id: 'new1-12', title: 'Boy With Luv', artist: 'BTS', folder: 'new1', file: 'Boy With Luv (BTS).mid' },
-    { id: 'new1-13', title: 'Callaíta', artist: 'Bad Bunny', folder: 'new1', file: 'Callaíta - Bad Bunny (tutorial by HotMelody).mid.mid' },
-    { id: 'new1-14', title: 'You Are The Reason', artist: 'Calum Scott', folder: 'new1', file: 'Calum Scott - You Are The Reason by Lemon.mid' },
-    { id: 'new1-15', title: 'Danza Kuduro', artist: 'Don Omar', folder: 'new1', file: 'Danza Kuduro.mid' },
-    { id: 'new1-16', title: 'Skinny Love', artist: 'Bon Iver', folder: 'new1', file: 'Debra_Bon Iver - Skinny Love.mid' },
-    { id: 'new1-17', title: 'Demons', artist: 'Imagine Dragons', folder: 'new1', file: 'Demons-Imagine Dragons (finished=).mid' },
-    { id: 'new1-18', title: 'Don\'t Stop Believin', artist: 'Journey', folder: 'new1', file: 'Don\'t Stop Believin\' - Journey.mid.mid' },
-    { id: 'new1-19', title: 'God\'s Plan', artist: 'Drake', folder: 'new1', file: 'Drake - God\'s Plan FREE MIDI BY BLAKMAT3.mid.mid' },
-    { id: 'new1-20', title: 'I See Fire', artist: 'Ed Sheeran', folder: 'new1', file: 'Ed Sheeran - I See Fire - The Hobbit.mid.mid' },
-    { id: 'new1-21', title: 'Ella Baila Sola', artist: 'Eslabon Armado, Peso Pluma', folder: 'new1', file: 'Ella Baila Sola ft. Peso Pluma-01383244.mid' },
-    { id: 'new1-22', title: 'Love The Way You Lie', artist: 'Eminem ft. Rihanna', folder: 'new1', file: 'Eminem ft. Rihanna - Love The Way You Lie.mid.mid' },
-    { id: 'new1-23', title: 'Fireflies', artist: 'Owl City', folder: 'new1', file: 'Fireflies - Owl City.mid' },
-    { id: 'new1-24', title: 'Grenade', artist: 'Bruno Mars', folder: 'new1', file: 'Grenade by Bruno Mars.mid' },
-    { id: 'new1-25', title: 'November Rain', artist: 'Guns N\' Roses', folder: 'new1', file: 'Guns n Roses - November Rain.mid.mid' },
-    { id: 'new1-26', title: 'Hotline Bling', artist: 'Drake', folder: 'new1', file: 'Hotline Bling MIDI UPDATED 2016.mid.mid' },
-    { id: 'new1-27', title: 'Take Me To Church', artist: 'Hozier', folder: 'new1', file: 'Hozier - Take Me To Church.mid.mid' },
-    { id: 'new1-28', title: 'HUMBLE.', artist: 'Kendrick Lamar', folder: 'new1', file: 'HUMBLE. - Kendrick Lamar.mid' },
-    { id: 'new1-29', title: 'Love Scenario', artist: 'iKON', folder: 'new1', file: 'iKON - Love Scenario .mid' },
-    { id: 'new1-30', title: 'Goo Goo Dolls', artist: 'IRIS', folder: 'new1', file: 'IRIS- Goo Goo Dolls .mid' },
-    { id: 'new1-31', title: 'Lucid Dreams', artist: 'Juice WRLD', folder: 'new1', file: 'Juice WRLD - Lucid Dreams (Chords MIDI).mid.mid' },
-    { id: 'new1-32', title: 'Just Give Me A Reason Pink Feat. Nate Ruess', artist: 'Unknown', folder: 'new1', file: 'Just Give Me A Reason Pink Feat. Nate Ruess.mid' },
-    { id: 'new1-33', title: 'Kill This Love', artist: 'Blackpink', folder: 'new1', file: 'Kill This Love- Blackpink.mid' },
-    { id: 'new1-34', title: 'Kiss Me', artist: 'Sixpence None the Richer ¦ Ippantekina', folder: 'new1', file: 'Kiss Me - Sixpence None the Richer ¦ Ippantekina.mid' },
-    { id: 'new1-35', title: 'LA CANCIÓN', artist: 'Bad Bunny, J Balvin', folder: 'new1', file: 'LA CANCIÓN- BAD BUNNY FT.  J BALVIN.mid' },
-    { id: 'new1-36', title: 'Losing My Religion', artist: 'R.E.M.', folder: 'new1', file: 'Losing My Religion.mid' },
-    { id: 'new1-37', title: 'Experience', artist: 'Ludovico Einaudi', folder: 'new1', file: 'Ludovico Einaudi - Experience.mid' },
-    { id: 'new1-38', title: 'Despacito ft. Daddy Yankee', artist: 'Luis Fonsi', folder: 'new1', file: 'Luis Fonsi - Despacito ft. Daddy Yankee.mid' },
-    { id: 'new1-39', title: 'Memories MIDI FILE', artist: 'Maroon 5', folder: 'new1', file: 'Maroon 5 - Memories MIDI FILE.mid.mid' },
-    { id: 'new1-40', title: 'Nothing Else Matters', artist: 'Metallica', folder: 'new1', file: 'Nothing Else Matters.mid' },
-    { id: 'new1-41', title: 'One Dance', artist: 'Drake', folder: 'new1', file: 'One Dance - Drake.mid' },
-    { id: 'new1-42', title: 'Apologize', artist: 'OneRepublic', folder: 'new1', file: 'OneRepublic - Apologize.mid.mid' },
-    { id: 'new1-43', title: 'Pink Venom', artist: 'BLACKPINK', folder: 'new1', file: 'Pink Venom - BLACKPINK.mid' },
-    { id: 'new1-44', title: 'Propuesta Indecente', artist: 'Romeo Santos', folder: 'new1', file: 'Propuesta Indecente - Romeo Santos [Piano].mid' },
-    { id: 'new1-45', title: 'Gangnam Style', artist: 'Psy', folder: 'new1', file: 'Psy - Gangnam Style.mid' },
-    { id: 'new1-46', title: 'Diamonds', artist: 'Rihanna', folder: 'new1', file: 'rihanna-diamonds.mid.mid' },
-    { id: 'new1-47', title: 'Umbrella', artist: 'Rihanna', folder: 'new1', file: 'rihanna-umbrella.mid.mid' },
-    { id: 'new1-48', title: 'Riptide', artist: 'Vance Joy', folder: 'new1', file: 'Riptide ~ Vance Joy.mid' },
-    { id: 'new1-49', title: 'Rockstar', artist: 'Post Malone', folder: 'new1', file: 'Rockstar - Post Malone (ft. 21 Savage) .mid' },
-    { id: 'new1-50', title: 'SAD!', artist: 'XXXTENTACION', folder: 'new1', file: 'SAD! - XXXTENTACION (By Guest).mid' },
-    { id: 'new1-51', title: 'See You Again', artist: 'Wiz Khalifa ft. Charlie Puth', folder: 'new1', file: 'See You Again - Charlie Puth (Piano Cover_Midi Dowload).mid' },
-    { id: 'new1-52', title: 'Unstoppable', artist: 'Sia', folder: 'new1', file: 'Sia - Unstoppable.mid.mid' },
-    { id: 'new1-53', title: 'Chandelier', artist: 'Sia', folder: 'new1', file: 'Sia- Chandelier (Import Midi).mid' },
-    { id: 'new1-54', title: 'Toxic', artist: 'Britney Spears', folder: 'new1', file: 'Spears Britney — Toxic [MIDISTOCK.RU].mid.mid' },
-    { id: 'new1-55', title: 'Stay With Me', artist: 'Sam Smith', folder: 'new1', file: 'Stay With Me - Sam Smith - Piano Cover Video by YourPianoCover.mid.mid' },
-    { id: 'new1-56', title: 'Stressed Out', artist: 'Twenty One Pilots', folder: 'new1', file: 'Stressed Out  (Twenty One Pilots).mid' },
-    { id: 'new1-57', title: 'Sweater Weather', artist: 'The Neighbourhood', folder: 'new1', file: 'sweater weather.mid' },
-    { id: 'new1-58', title: 'Everybody Wants to Rule the World', artist: 'Tears for Fears', folder: 'new1', file: 'Tears for Fears - Everybody Wants to Rule the World.mid' },
-    { id: 'new1-59', title: 'To Build a Home', artist: 'The Cinematic Orchestra', folder: 'new1', file: 'The Cinematic Orchestra - To Build a Home Edit.mid' },
-    { id: 'new1-60', title: 'The Night We Met', artist: 'Lord Huron', folder: 'new1', file: 'The Night We Met - Lord Huron.mid' },
-    { id: 'new1-61', title: 'The Hills', artist: 'The Weeknd', folder: 'new1', file: 'The Weeknd - The Hills.mid.mid' },
-    { id: 'new1-62', title: 'Starboy', artist: 'The Weeknd', folder: 'new1', file: 'The Weeknd ft. Daft Punk - Starboy .mid' },
-    { id: 'new1-63', title: 'Tití Me Preguntó', artist: 'Bad Bunny', folder: 'new1', file: 'Tití Me Preguntó.mid' },
-    { id: 'new1-64', title: 'Another Love', artist: 'Tom Odell', folder: 'new1', file: 'Tom Odell - Another Love.mid' },
-    { id: 'new1-65', title: 'Africa', artist: 'Toto', folder: 'new1', file: 'toto-africa.mid' },
-    { id: 'new1-66', title: 'Goosebumps', artist: 'Travis Scott', folder: 'new1', file: 'Travis Scott - goosebumps ft. Kendrick Lamar.mid.mid' },
-    { id: 'new1-67', title: 'SICKO MODE', artist: 'Travis Scott', folder: 'new1', file: 'Travis Scott - SICKO MODE.mid' },
-    { id: 'new1-68', title: 'Heathens', artist: 'Twenty One Pilots', folder: 'new1', file: 'twenty one pilots - Heathens (from Suicide Squad_ The Album).mid' },
-    { id: 'new1-69', title: 'With or Without You', artist: 'U2', folder: 'new1', file: 'U2 - With or Without You.mid.mid' },
-    { id: 'new1-70', title: 'We Found Love', artist: 'Rihanna', folder: 'new1', file: 'We Found Love Rihanna.mid' },
-    { id: 'new1-71', title: 'When the Party\'s Over', artist: 'Billie Eilish', folder: 'new1', file: 'When the party\'s over - Billie Eilish (multiple parts).mid' },
-    { id: 'new1-72', title: 'Without Me', artist: 'Halsey', folder: 'new1', file: 'Without me-Halsey.mid' },
-    { id: 'new1-73', title: 'Wonderwall', artist: 'Oasis', folder: 'new1', file: 'Wonderwall- Oasis (full).mid' },
-    { id: 'new1-74', title: 'Jocelyn Flores', artist: 'XXXTENTACION', folder: 'new1', file: 'XxxTentacion - Jocelyn Flores.mid' },
-    { id: 'new1-75', title: 'Youth', artist: 'Daughter', folder: 'new1', file: 'Youth - Daughter (Electric piano cover).mid' }
-];
-
-// ── URL builder ───────────────────────────────────────────────────────────────
-// Bucket my-lmd-files is public (confirmed via songs.xml listing at storage.googleapis.com)
-const GCS_PUBLIC_BASE = process.env.LAKH_GCS_PUBLIC_BASE_URL || 'https://storage.googleapis.com/my-lmd-files';
-
-const buildMidiUrl = (song) => {
-    const key = `${song.folder}/${song.file}`;
-    return `/api/midi-object?key=${encodeURIComponent(key)}`;
-};
-
-let CACHED_INDEX_SONGS = null;
-const loadIndexedSongs = () => {
-    if (CACHED_INDEX_SONGS) return CACHED_INDEX_SONGS;
     try {
-        const indexPath = path.join(__dirname, '..', '..', 'data', 'song-index.json');
-        if (!fs.existsSync(indexPath)) {
-            CACHED_INDEX_SONGS = [];
-            return CACHED_INDEX_SONGS;
-        }
-        const raw = fs.readFileSync(indexPath, 'utf8');
-        const parsed = JSON.parse(raw);
-        CACHED_INDEX_SONGS = Array.isArray(parsed) ? parsed : [];
-        return CACHED_INDEX_SONGS;
-    } catch {
-        CACHED_INDEX_SONGS = [];
-        return CACHED_INDEX_SONGS;
+        console.log(`[midi-search] Fetching remote songs from: ${SONGS_JSON_URL}`);
+        const resp = await fetch(SONGS_JSON_URL);
+        if (!resp.ok) throw new Error(`Failed to fetch songs.json: ${resp.status}`);
+        const data = await resp.json();
+
+        // Ensure each song has a stable ID and the properties we expect
+        CACHED_SONGS = data.map((s, idx) => ({
+            id: `s-${idx}-${path.basename(s.file, '.mid')}`,
+            title: s.title,
+            artist: s.artist,
+            folder: s.category, // songs.json uses 'category' for the folder name
+            file: path.basename(s.file),
+            fullPath: s.file
+        }));
+
+        LAST_FETCH_TIME = now;
+        return CACHED_SONGS;
+    } catch (err) {
+        console.error(`[midi-search] Error loading remote songs: ${err.message}`);
+        return CACHED_SONGS || []; // Return cache if available, else empty
     }
 };
 
-const getSongPool = () => {
-    const indexed = loadIndexedSongs();
-    return indexed.length ? indexed : SONGS;
+// ── URL builder ───────────────────────────────────────────────────────────────
+const buildMidiUrl = (song) => {
+    // We pass the full relative path as the key
+    return `/api/midi-object?key=${encodeURIComponent(song.fullPath)}`;
 };
 
 const normalizeCategory = (input) => {
@@ -254,25 +72,24 @@ const normalizeCategory = (input) => {
 };
 
 const getSongCategory = (song) => {
-    // Categories used by the UI chips.
-    if (['movie'].includes(song.folder)) return 'movies';
-    if (['multi-lang', 'anime'].includes(song.folder)) return 'anime';
-    if (['timeless', 'intro'].includes(song.folder)) return 'classical';
-    if (song.folder === 'love') return 'love';
-    if (['pop-icon', 'modern', 'hits', 'universal', 'new1', '2023-26_modern-hits', 'new'].includes(song.folder)) return 'pop';
+    const f = song.folder;
+    if (['movie'].includes(f)) return 'movies';
+    if (['multi-lang', 'anime'].includes(f)) return 'anime';
+    if (['timeless', 'intro'].includes(f)) return 'classical';
+    if (f === 'love') return 'love';
+    if (['pop-icon', 'modern', 'hits', 'universal', 'new1', '2023-26_modern-hits', 'new', 'emotional'].includes(f)) return 'pop';
     return 'pop';
 };
 
 // ── Simple text search ────────────────────────────────────────────────────────
-const searchSongs = (query, limit = 25) => {
+const searchSongs = (pool, query, limit = 25) => {
     const originalQuery = String(query || '').trim();
     const q = normalizeCategory(originalQuery);
     if (!q) return [];
 
-    const pool = getSongPool();
-
     // Filter by Category Click
-    if (q === "pop" || q === "movies" || q === "anime" || q === "classical" || q === "love") {
+    const standardCategories = ["pop", "movies", "anime", "classical", "love"];
+    if (standardCategories.includes(q)) {
         return pool.filter(song => {
             if (q === "pop") return ['pop-icon', 'modern', 'hits', 'universal', 'new1', '2023-26_modern-hits', 'emotional'].includes(song.folder);
             if (q === "movies") return song.folder === 'movie';
@@ -292,7 +109,6 @@ const searchSongs = (query, limit = 25) => {
     const tokens = q.split(/\s+/).filter(t => t.length >= 2);
     const scored = [];
 
-    // Fuzzy character-overlap scorer: counts how many consecutive 3-char ngrams of `a` appear in `b`
     const ngramScore = (needle, haystack, n = 3) => {
         if (needle.length < n) return haystack.includes(needle) ? 1 : 0;
         let hits = 0;
@@ -308,20 +124,17 @@ const searchSongs = (query, limit = 25) => {
         const haystack = `${titleL} ${artistL}`;
         let score = 0;
 
-        // Exact / prefix / substring matches on full query
         if (titleL === q) score += 100;
         else if (titleL.startsWith(q)) score += 60;
         else if (titleL.includes(q)) score += 40;
         if (artistL.includes(q)) score += 20;
         if (haystack.includes(q)) score += 10;
 
-        // Per-token matches (handles multi-word queries)
         for (const t of tokens) {
             if (titleL.includes(t)) score += 8;
             else if (artistL.includes(t)) score += 5;
         }
 
-        // Fuzzy ngram overlap for typo tolerance
         const titleFuzzy = ngramScore(q, titleL);
         const artistFuzzy = ngramScore(q, artistL);
         score += titleFuzzy * 15;
@@ -341,7 +154,6 @@ const searchSongs = (query, limit = 25) => {
             category: getSongCategory(song),
         }));
 
-    // If no results, fall back to random top picks so the screen is never empty
     if (results.length === 0) {
         const shuffle = (arr) => {
             const a = [...arr];
@@ -375,20 +187,15 @@ exports.handler = async (event) => {
         'Cache-Control': 'public, max-age=300',
     };
 
-    // Diagnostic checks handled quietly
     console.log("[midi-search] Function invoked.");
-    console.log(`[midi-search] LAKH_GCS_BUCKET_NAME: ${process.env.LAKH_GCS_BUCKET_NAME}`);
-    console.log(`[midi-search] LAKH_GCS_PUBLIC_BASE_URL: ${process.env.LAKH_GCS_PUBLIC_BASE_URL}`);
+
+    const pool = await fetchSongs();
+    console.log(`[midi-search] Song pool size: ${pool.length}`);
 
     const query = (event.queryStringParameters?.q || '').trim();
     console.log(`[midi-search] Query: "${query}"`);
 
-    const pool = getSongPool();
-    console.log(`[midi-search] Song pool size: ${pool.length}`);
-
-    // No query → return 18 curated "featured" picks for the home screen
     if (!query) {
-        // Shuffle an array using Fisher-Yates
         const shuffle = (array) => {
             let currentIndex = array.length, randomIndex;
             while (currentIndex !== 0) {
@@ -399,7 +206,6 @@ exports.handler = async (event) => {
             return array;
         };
 
-        // Get 18 random popular/new songs to keep it fresh
         const candidatePool = pool.filter(s => ['universal', 'new1', 'modern', 'hits', 'pop-icon'].includes(s.folder));
         const featured = shuffle(candidatePool)
             .slice(0, 18)
@@ -413,7 +219,7 @@ exports.handler = async (event) => {
         return { statusCode: 200, headers, body: JSON.stringify({ results: featured, meta: { totalIndexed: pool.length } }) };
     }
 
-    const results = searchSongs(query);
+    const results = searchSongs(pool, query);
     return { statusCode: 200, headers, body: JSON.stringify({ results, meta: { totalIndexed: pool.length } }) };
 };
 
