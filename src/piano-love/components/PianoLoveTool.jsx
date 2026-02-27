@@ -12,10 +12,12 @@ import SongSelection from './SongSelection';
 import PianoPlayer from './PianoPlayer';
 import MessageForm from './MessageForm';
 
-// Lazy load heavy dependencies only when needed
 const loadMidi = () => import('@tonejs/midi');
 const loadLottie = () => import('lottie-react');
 const loadAnimationData = () => import('../../assets/animations/complete.json');
+
+// Toggle this between '' (relative), '.netlify/functions', or your Cloudflare Worker URL
+const API_BASE = 'https://midi-backend.themayankgamerz.workers.dev'; 
 
 function PianoLoveTool() {
   const navigate = useNavigate();
@@ -241,7 +243,7 @@ function PianoLoveTool() {
     const loadFeatured = async () => {
       setIsLoadingSuggestions(true);
       try {
-        const response = await fetch('/api/midi-search', { signal: controller.signal });
+        const response = await fetch(`${API_BASE}/api/midi-search`, { signal: controller.signal });
         const payload = await response.json().catch(() => ({ results: [] }));
         const rows = Array.isArray(payload?.results) ? payload.results : [];
         if (!mounted) return;
@@ -296,7 +298,7 @@ function PianoLoveTool() {
     const timeout = window.setTimeout(() => controller.abort(), 12000);
 
     try {
-      const response = await fetch(`/api/midi-search?q=${encodeURIComponent(clean)}`, {
+      const response = await fetch(`${API_BASE}/api/midi-search?q=${encodeURIComponent(clean)}`, {
         signal: controller.signal
       });
       if (!response.ok) throw new Error('Search service unavailable.');
