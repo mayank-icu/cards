@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Auth Handler</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="spinner"></div>
+        <h2>Completing authentication...</h2>
+        <p>Please wait while we sign you in.</p>
+    </div>
+    <script>
+        // Firebase Auth handler script
+        // This page handles the OAuth redirect from Firebase Auth
+        (function() {
+            // Get the hash parameters from the URL
+            const hash = window.location.hash.substring(1);
+            const params = new URLSearchParams(hash);
+            
+            // Extract relevant parameters
+            const apiKey = params.get('apiKey');
+            const accessToken = params.get('accessToken');
+            const idToken = params.get('idToken');
+            const error = params.get('error');
+            
+            if (error) {
+                // Handle authentication error
+                console.error('Authentication error:', error);
+                window.location.href = '/login?error=' + encodeURIComponent(error);
+                return;
+            }
+            
+            if (apiKey && (accessToken || idToken)) {
+                // Authentication successful - redirect to the app
+                // The actual token handling will be done by the Firebase SDK in the main app
+                setTimeout(() => {
+                    window.location.href = '/login?auth=success';
+                }, 1000);
+            } else {
+                // No auth data found - redirect to login
+                setTimeout(() => {
+                    window.location.href = '/login';
+                }, 1000);
+            }
+        })();
+    </script>
+</body>
+</html>

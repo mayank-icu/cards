@@ -1,0 +1,203 @@
+/* Formal Invite Styles */
+.invite-container {
+    min-height: 100vh;
+    background: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Playfair Display', serif;
+    padding: 20px;
+    color: #d4af37;
+}
+
+.invite-card {
+    background: #000;
+    border: 2px solid #d4af37;
+    padding: 50px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+    position: relative;
+}
+
+.invite-card::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    pointer-events: none;
+}
+
+.invite-title {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.invite-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+.invite-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.invite-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #d4af37;
+    padding: 15px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.invite-input:focus {
+    outline: none;
+    border-bottom: 2px solid #fff;
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.invite-btn {
+    background: #d4af37;
+    color: #000;
+    padding: 15px 40px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.invite-btn:hover {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+/* View Page - Envelope Animation */
+.envelope-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: #d4af37;
+    transform-style: preserve-3d;
+    transition: transform 1s ease;
+}
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+    z-index: 0;
+}
+
+.envelope.open .card-content {
+    transform: translateY(-150px);
+    z-index: 2;
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: #c5a028;
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    transform-origin: top;
+    transition: transform 0.6s ease 0.5s;
+    z-index: 3;
+}
+
+.pocket {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: #b08d1e;
+    clip-path: polygon(0 0, 50% 40%, 100% 0, 100% 100%, 0 100%);
+    z-index: 2;
+}
+
+.card-content {
+    position: absolute;
+    top: 10px;
+    left: 5%;
+    width: 90%;
+    height: 380px;
+    background: #fff;
+    padding: 30px;
+    text-align: center;
+    transition: transform 1s ease 1s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-inner {
+    border: 1px solid #d4af37;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.event-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.event-details {
+    font-family: 'Montserrat', sans-serif;
+    color: #666;
+    line-height: 2;
+    margin: 20px 0;
+}
+
+.rsvp-btn {
+    background: #000;
+    color: #d4af37;
+    border: none;
+    padding: 10px 30px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.rsvp-btn:hover {
+    background: #d4af37;
+    color: #000;
+}

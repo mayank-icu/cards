@@ -1,0 +1,36 @@
+# Blog .htaccess for SEO and routing
+# This ensures the static blog posts maintain SEO while integrating with React app
+
+# Enable URL rewriting
+RewriteEngine On
+
+# Redirect blog root to React app (maintains SEO)
+RewriteRule ^$ /blog [R=301,L]
+
+# Serve static blog posts directly (maintains SEO)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Set proper headers for blog posts
+<Files "*.html">
+    Header always set Content-Type "text/html; charset=UTF-8"
+    Header always set Cache-Control "public, max-age=3600"
+</Files>
+
+# Set proper headers for CSS and JS
+<Files "*.css">
+    Header always set Content-Type "text/css; charset=UTF-8"
+    Header always set Cache-Control "public, max-age=86400"
+</Files>
+
+<Files "*.js">
+    Header always set Content-Type "application/javascript; charset=UTF-8"
+    Header always set Cache-Control "public, max-age=86400"
+</Files>
+
+# Security headers
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "DENY"
+Header always set X-XSS-Protection "1; mode=block"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"

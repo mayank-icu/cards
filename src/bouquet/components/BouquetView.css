@@ -1,0 +1,354 @@
+/* Minimalist View Theme */
+.bouquet-view-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #FDFBF7;
+}
+
+.bouquet-view-error {
+    text-align: center;
+    padding: 4rem;
+    background-color: #FDFBF7;
+    min-height: 100vh;
+}
+
+.bouquet-view-page-minimal {
+    min-height: 100vh;
+    background-color: #FDFBF7;
+    color: #2d2d2d;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    /* Account for fixed Navbar */
+}
+
+.bouquet-view-content {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 2rem 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    /* Align to top for vertical layout */
+}
+
+.view-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Vertical layout on all devices */
+    gap: 3rem;
+    width: 100%;
+    align-items: start;
+    /* Align to top instead of center */
+}
+
+/* Visual Column */
+.view-visual-column {
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.bouquet-canvas-view {
+    width: 100%;
+    max-width: 600px;
+    /* Match Editor */
+    aspect-ratio: 3/4;
+    background-size: 100% 100%;
+    /* Fix cropping */
+    background-position: center;
+    position: relative;
+    /* Removed card styling */
+    background-color: transparent;
+    overflow: hidden;
+    animation: fadeInSlide 0.8s ease-out;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px) rotateX(5deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+.bouquet-flowers-layer-view {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    right: 50px;
+    bottom: 50px;
+}
+
+/* V2 Placed Flowers */
+.placed-flower-view {
+    position: absolute;
+    width: 28%;
+    /* Bigger on desktop */
+    height: auto;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+}
+
+.placed-flower-view img {
+    width: 100%;
+    height: auto;
+}
+
+/* Message Column */
+.view-message-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 500px;
+}
+
+.postcard-display {
+    background: white;
+    padding: 3rem;
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    /* Minimal shadow */
+    position: relative;
+    /* Paper texture effect optional */
+    background-image: linear-gradient(to bottom, transparent 98%, rgba(0, 0, 0, 0.03) 100%);
+    background-size: 100% 2rem;
+    background-attachment: local;
+    animation: fadeIn 0.8s ease-out 0.2s backwards;
+}
+
+.postcard-body {
+    font-family: 'Playfair Display', serif;
+    /* Or Handlee if available */
+    color: #2d2d2d;
+    line-height: 2;
+    /* Match line ruled lines */
+}
+
+.postcard-text {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    white-space: pre-wrap;
+}
+
+.postcard-signature {
+    font-size: 1.2rem;
+    font-style: italic;
+    text-align: right;
+    margin-top: 1rem;
+}
+
+.legacy-metadata {
+    border-top: 1px solid #eee;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Song Player Minimal */
+.song-player-minimal {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background: white;
+    border-radius: 50px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+    max-width: 400px;
+    animation: fadeIn 0.8s ease-out 0.4s backwards;
+}
+
+.song-player-minimal img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    animation: spin 4s linear infinite;
+    animation-play-state: paused;
+}
+
+
+
+.song-info {
+    flex: 1;
+}
+
+.song-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.song-artist {
+    font-size: 0.8rem;
+    color: #666;
+    margin: 0;
+}
+
+.play-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #2d2d2d;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.play-btn.playing {
+    background: #1db954;
+    /* Spotify green */
+}
+
+.play-btn:hover {
+    transform: scale(1.1);
+}
+
+.create-own-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: 2px solid #2d2d2d;
+    color: #2d2d2d;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: fit-content;
+    animation: fadeIn 0.8s ease-out 0.6s backwards;
+}
+
+.create-own-btn:hover {
+    background: #2d2d2d;
+    color: white;
+}
+
+/* LEGACY STYLES (For V1 Bouquets) */
+.bouquet-arrangement-view {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 70%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.bouquet-flower-legacy {
+    width: 80px;
+    height: 150px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* Arrangement 0: Classic centered (Legacy) */
+.arrangement-0 .flower-0 {
+    transform: translateY(0) rotate(-10deg);
+}
+
+.arrangement-0 .flower-1 {
+    transform: translateY(-20px) rotate(5deg);
+}
+
+.arrangement-0 .flower-2 {
+    transform: translateY(-10px) rotate(-5deg);
+}
+
+.arrangement-0 .flower-3 {
+    transform: translateY(-15px) rotate(10deg);
+}
+
+.arrangement-0 .flower-4 {
+    transform: translateY(-5px) rotate(-15deg);
+}
+
+.arrangement-0 .flower-5 {
+    transform: translateY(-25px) rotate(8deg);
+}
+
+/* Arrangement 1: Spread out (Legacy) */
+.arrangement-1 .flower-0 {
+    transform: translateY(0) translateX(-40px) rotate(-15deg);
+}
+
+.arrangement-1 .flower-1 {
+    transform: translateY(-30px) translateX(-20px) rotate(10deg);
+}
+
+.arrangement-1 .flower-2 {
+    transform: translateY(-20px) rotate(0deg);
+}
+
+.arrangement-1 .flower-3 {
+    transform: translateY(-25px) translateX(20px) rotate(-10deg);
+}
+
+.arrangement-1 .flower-4 {
+    transform: translateY(-10px) translateX(40px) rotate(15deg);
+}
+
+.arrangement-1 .flower-5 {
+    transform: translateY(-35px) rotate(5deg);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .view-grid {
+        gap: 2rem;
+        /* Keep vertical layout */
+    }
+
+    .bouquet-view-content {
+        padding: 2rem 0.5rem;
+        /* Wider on mobile */
+    }
+
+    .view-message-column {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .song-player-minimal {
+        max-width: 100%;
+    }
+
+    .bouquet-view-page-minimal {
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .bouquet-canvas-view {
+        aspect-ratio: 3/4;
+    }
+
+    .placed-flower-view {
+        width: 38%;
+        /* Even bigger on mobile */
+    }
+
+    .postcard-display {
+        padding: 1.5rem;
+    }
+
+    .postcard-text {
+        font-size: 1.1rem;
+    }
+}

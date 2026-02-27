@@ -1,0 +1,111 @@
+.slug-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.slug-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.slug-input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  overflow: hidden;
+  transition: border-color 0.2s;
+  min-width: 0;
+}
+
+.slug-input-wrapper:focus-within {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px #3b82f6;
+}
+
+.slug-prefix {
+  padding: 0.5rem 0.75rem;
+  background-color: #f3f4f6;
+  color: #6b7280;
+  font-size: 0.875rem;
+  border-right: 1px solid #d1d5db;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 55%;
+}
+
+.slug-input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  outline: none;
+  font-size: 0.875rem;
+  background-color: transparent;
+  min-width: 0;
+}
+
+.slug-input.available {
+  color: #059669;
+}
+
+.slug-input.unavailable {
+  color: #dc2626;
+}
+
+.slug-status {
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 520px) {
+  .slug-prefix {
+    max-width: 42%;
+  }
+}
+
+.slug-status .spin {
+  animation: spin 1s linear infinite;
+  color: #6b7280;
+}
+
+.slug-status .check {
+  color: #059669;
+}
+
+.slug-status .cross {
+  color: #dc2626;
+}
+
+.slug-error {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.slug-success {
+  color: #059669;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.slug-hint {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

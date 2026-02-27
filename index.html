@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Performance optimizations -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="//firebase.googleapis.com" />
+  <link rel="dns-prefetch" href="//firestore.googleapis.com" />
+  <link rel="dns-prefetch" href="//www.google-analytics.com" />
+  <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://www.google-analytics.com" />
+
+  <!-- Critical CSS inline -->
+  <style>
+    /* Critical above-the-fold styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #fff;
+      overflow-x: hidden;
+      line-height: 1.6;
+      color: #333
+    }
+
+    #root {
+      min-height: 100vh
+    }
+
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh
+    }
+
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #667eea;
+      border-radius: 50%;
+      animation: spin 1s linear infinite
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg)
+      }
+
+      100% {
+        transform: rotate(360deg)
+      }
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 2rem
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #667eea;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer
+    }
+
+    .btn:hover {
+      background: #5a67d8;
+      transform: translateY(-2px)
+    }
+  </style>
+
+  <!-- Playfair Display Font -->
+  <link rel="preload"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap">
+  </noscript>
+
+  <!-- Preload critical resources -->
+  <link rel="preload" href="/src/main.jsx" as="script" crossorigin="anonymous" />
+
+  <!-- Defer non-critical scripts -->
+  <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdyCVMsAAAAAD4bBL2ym6vR9_a5tlsxHq-XWejL" async
+    defer></script>
+
+  <!-- Search Engine Verification -->
+  <meta name="google-site-verification" content="PLACEHOLDER_ADD_YOUR_CODE_FROM_SEARCH_CONSOLE" />
+  <meta name="msvalidate.01" content="PLACEHOLDER_ADD_YOUR_CODE_FROM_BING" />
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y90HK3VW9X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-Y90HK3VW9X', {
+      page_path: window.location.pathname,
+      send_page_view: true
+    });
+  </script>
+
+  <!-- Primary Meta Tags -->
+  <title>EGreet - Create Beautiful Greeting Cards Online | Free Card Maker</title>
+  <meta name="title" content="EGreet - Create Beautiful Greeting Cards Online | Free Card Maker" />
+  <meta name="description"
+    content="Create beautiful, personalized greeting cards for any occasion without any coding experience. Free online card maker with professional templates. No login required!" />
+  <meta name="keywords"
+    content="greeting cards, card maker, online cards, personalized cards, free card creator, birthday cards, valentine cards, custom cards, card design, digital cards, ecard maker, free ecard maker online, online ecard maker, free online ecard maker" />
+  <meta name="author" content="EGreet" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="language" content="English" />
+  <meta name="revisit-after" content="7 days" />
+  <meta name="rating" content="general" />
+  <meta name="distribution" content="global" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="EGreet - Create Beautiful Greeting Cards Online" />
+  <meta property="og:description"
+    content="Design personalized greeting cards for any occasion. Free, easy to use, no login required!" />
+  <meta property="og:site_name" content="EGreet" />
+  <meta property="og:url" content="https://egreet.in" />
+  <meta property="og:image" content="https://egreet.in/og.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="EGreet - Create Beautiful Greeting Cards Online" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="EGreet - Create Beautiful Greeting Cards Online" />
+  <meta name="twitter:description"
+    content="Design personalized greeting cards for any occasion. Free, easy to use, no login required!" />
+  <meta name="twitter:image" content="https://egreet.in/og.webp" />
+  <meta name="twitter:image:alt" content="EGreet - Create Beautiful Greeting Cards Online" />
+
+  <!-- Additional SEO Meta Tags -->
+  <meta name="application-name" content="EGreet" />
+  <meta name="apple-mobile-web-app-title" content="EGreet" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="msapplication-TileColor" content="#667eea" />
+  <meta name="theme-color" content="#667eea" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://egreet.in" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Structured Data - WebApplication -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "EGreet",
+      "alternateName": "EGreet Card Maker",
+      "description": "Create beautiful, personalized greeting cards for any occasion without any coding experience. Free online card maker with professional templates.",
+      "url": "https://egreet.in",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "EGreet",
+        "url": "https://egreet.in",
+        "logo": "https://egreet.in/logo.webp",
+        "sameAs": []
+      },
+      "featureList": [
+        "Birthday Cards",
+        "Valentine Cards", 
+        "Anniversary Cards",
+        "Wedding Invitations",
+        "Thank You Cards",
+        "Congratulations Cards",
+        "Get Well Soon Cards",
+        "Custom Card Design",
+        "Free Online Card Maker",
+        "No Login Required"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "156",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }
+    </script>
+
+  <!-- Structured Data - Organization -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "EGreet",
+      "url": "https://egreet.in",
+      "logo": "https://egreet.in/logo.webp",
+      "description": "Free online greeting card maker for all occasions",
+      "foundingDate": "2024",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "url": "https://egreet.in/contact"
+      }
+    }
+    </script>
+
+  <!-- Structured Data - BreadcrumbList -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://egreet.in"
+      }]
+    }
+  </script>
+
+  <!-- Structured Data - FAQ -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is EGreet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "EGreet is a free online greeting card maker that allows you to create beautiful, personalized cards for any occasion. No login required, no coding needed. Choose from over 31 different card types including birthdays, valentines, weddings, and more."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I create a greeting card on EGreet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Creating a card on EGreet is easy! Simply select the occasion (birthday, valentine, etc.), choose a template, customize your message, add photos if desired, and share your card via link. The entire process takes just a few minutes and requires no technical skills."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is EGreet really free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! EGreet is completely free to use with no hidden costs. You can create unlimited greeting cards, customize them as much as you want, and share them with anyone. No subscription or payment required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to create an account to use EGreet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No! You can create and share greeting cards without creating an account. However, if you want to save your cards for later or access them across devices, you can optionally create a free account."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What types of greeting cards can I create?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "EGreet offers 31+ different card types including Birthday, Valentine, Anniversary, Wedding, Thank You, Congratulations, Get Well Soon, Graduation, New Baby, Christmas, New Year, Easter, Halloween, and many more. We have cards for every occasion!"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I add my own photos to the cards?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Many of our card templates allow you to upload and add your own photos, making your greeting cards truly personalized and special."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I share my greeting card?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Once you create your card, EGreet generates a unique shareable link. You can send this link via email, text message, social media, or any other messaging platform. The recipient can view your beautiful card directly in their browser."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the greeting cards mobile-friendly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely! All EGreet cards are fully responsive and look beautiful on any device - desktop, tablet, or smartphone. Your recipients will have a great viewing experience regardless of how they access the card."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

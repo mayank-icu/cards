@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Performance Optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Inter:wght@200;300;400;500;600;700;800&family=Comfortaa:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+
+    <!-- SEO Meta Tags -->
+    <title>10 Creative Thank You Card Ideas That Show Genuine Gratitude | EGreet Blog 2024</title>
+    <meta name="title" content="10 Creative Thank You Card Ideas That Show Genuine Gratitude | EGreet Blog">
+    <meta name="description"
+        content="Discover 10 heartfelt DIY thank you card ideas in 2024. From handmade appreciation cards to digital designs, learn how to create meaningful thank you cards with EGreet's free card maker.">
+    <meta name="keywords"
+        content="thank you card ideas, creative thank you cards, DIY thank you cards, handmade thank you cards, appreciation cards, gratitude cards, online thank you card maker, digital thank you cards, thank you card designs 2024">
+    <meta name="author" content="EGreet Team">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="10 Creative Thank You Card Ideas That Show Genuine Gratitude">
+    <meta property="og:description"
+        content="Discover 10 heartfelt and creative thank you card ideas. From DIY crafts to digital designs with EGreet.">
+    <meta property="og:url" content="https://egreet.in/blog/post/creative-thank-you-card-ideas.html">
+    <meta property="og:site_name" content="EGreet">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?w=1200&h=630&fit=crop">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://egreet.in/blog/post/creative-thank-you-card-ideas.html">
+
+    <style>
+        :root {
+            /* Premium Color Palette (Matching Main Site) */
+            --primary-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            --secondary-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --secondary: #f59e0b;
+            --accent: #34d399;
+
+            --bg-primary: #faf8f5;
+            --bg-secondary: #fefdfb;
+            --bg-tertiary: #f5f2ed;
+            --bg-card: rgba(254, 253, 251, 0.95);
+
+            --text-primary: #2d2a26;
+            --text-secondary: #5a5651;
+            --text-muted: #8a8681;
+
+            --border-color: rgba(16, 185, 129, 0.15);
+            --shadow-sm: 0 2px 8px rgba(16, 185, 129, 0.08);
+            --shadow-md: 0 4px 16px rgba(16, 185, 129, 0.12);
+            --shadow-lg: 0 8px 32px rgba(16, 185, 129, 0.16);
+
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-subheading: 'Libre Baskerville', serif;
+            --font-body: 'Inter', sans-serif;
+            --font-accent: 'Comfortaa', cursive;
+
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+
+            --transition-base: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Navbar (Matching React App) */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition-base);
+            background: transparent;
+            padding: 1rem 0;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-sm);
+            padding: 0.5rem 0;
+        }
+
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .brand-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: var(--font-accent);
+        }
+
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition-base);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .nav-btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-base);
+        }
+
+        .nav-btn.login {
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .nav-btn.login:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .nav-btn.signup {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-btn.signup:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background-color: var(--text-primary);
+            transition: var(--transition-base);
+        }
+
+        /* Blog Layout */
+        .blog-wrapper {
+            padding-top: 120px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-bottom: 4rem;
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 0 1.5rem;
+        }
+
+        .blog-category {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .blog-title {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .blog-meta i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+
+        .blog-featured-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 4rem;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .blog-featured-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 48px rgba(16, 185, 129, 0.2);
+        }
+
+        .blog-content {
+            padding: 0 1.5rem;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-content strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .blog-content h2 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--text-primary);
+            margin: 3rem 0 1.5rem;
+            position: relative;
+        }
+
+        .blog-content h3 {
+            font-family: var(--font-subheading);
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        /* Content Cards & Tips */
+        .highlight-box {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow-sm);
+            margin: 2rem 0;
+            transition: var(--transition-base);
+        }
+
+        .highlight-box:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(5px);
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .tip-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-base);
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px) rotate(1deg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-top: 5rem;
+            padding: 3rem;
+            background: white;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--text-primary);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+            transition: var(--transition-base);
+        }
+
+        .faq-item:hover {
+            background: var(--bg-tertiary);
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.15rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-primary);
+        }
+
+        .faq-answer {
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            display: none;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+            animation: fadeSlideDown 0.3s ease;
+        }
+
+        .faq-icon {
+            transition: var(--transition-base);
+            color: var(--primary);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Footer (Matching React App) */
+        .site-footer {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 4rem 2rem 1rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: var(--font-accent);
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #eee;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #fff;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            opacity: 0.7;
+            transition: 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeSlideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .blog-title {
+                font-size: 2.2rem;
+            }
+
+            .navbar-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .blog-featured-image {
+                height: 300px;
+            }
+        }
+
+        .brand-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .footer-logo {
+            height: 50px;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-brand">
+                <img src="/logo.webp" alt="EGreet" class="brand-logo">
+            </a>
+
+            <div class="navbar-menu" id="navbarMenu">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/#features" class="nav-link">Features</a>
+                <a href="/#cards" class="nav-link">Cards</a>
+                <a href="/about" class="nav-link">About</a>
+                <a href="/blog" class="nav-link active">Blog</a>
+                <a href="/contact" class="nav-link">Contact</a>
+
+                <div id="authButtons" style="display: flex; gap: 1rem; align-items: center;">
+                    <a href="/login" class="nav-btn login">Login</a>
+                    <a href="/register" class="nav-btn signup">Sign Up</a>
+                </div>
+            </div>
+
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="blog-wrapper">
+        <header class="blog-header">
+            <span class="blog-category">Thank You Card Ideas</span>
+            <h1 class="blog-title">10 Creative Thank You Card Ideas That Show Genuine Gratitude</h1>
+            <div class="blog-meta">
+                <span><i class="fas fa-user"></i> EGreet Team</span>
+                <span><i class="fas fa-calendar"></i> January 25, 2024</span>
+                <span><i class="fas fa-clock"></i> 6 min read</span>
+            </div>
+        </header>
+
+        <img src="https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?w=1200&h=630&fit=crop"
+            alt="Creative Thank You Card Ideas" class="blog-featured-image">
+
+        <article class="blog-content">
+            <p>Thank you cards are more than just paper and ink – they're powerful expressions of gratitude that 
+               strengthen relationships and show genuine appreciation. Whether you're searching for <strong>creative 
+               thank you card ideas</strong>, <strong>DIY appreciation cards</strong>, or <strong>heartfelt thank you 
+               designs</strong>, this comprehensive guide covers everything you need to express your gratitude beautifully. 
+               While store-bought cards are convenient, creating <strong>personalized thank you cards</strong> shows your 
+               recipients how truly thankful you are. Discover <strong>unique thank you card ideas</strong> that will make 
+               your gratitude memorable and meaningful!
+            </p>
+
+            <h2>1. Handwritten Letter of Gratitude</h2>
+            <p>Create a heartfelt <strong>letter-style thank you card</strong> that goes beyond a simple message. 
+               Write a detailed letter expressing specific reasons for your gratitude and how their actions impacted 
+               you personally.</p>
+
+            <div class="highlight-box">
+                <h3>What You'll Need:</h3>
+                <ul>
+                    <li>Premium stationery or cardstock</li>
+                    <li>Quality pen (fountain pen for elegance)</li>
+                    <li>Envelope with matching design</li>
+                    <li>Wax seal or sticker for closure</li>
+                    <li>Dried flowers or pressed leaves (optional)</li>
+                </ul>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title"><i class="fas fa-heart"></i> Gratitude Tip</div>
+                <p>Be specific in your thanks. Instead of "Thanks for the gift," write "Thank you for the beautiful 
+                   handmade blanket – it's perfect for cozy reading nights and reminds me of your thoughtfulness every 
+                   time I use it."</p>
+            </div>
+
+            <h2>2. Photo Memory Thank You Card</h2>
+            <p>Transform your appreciation into a beautiful <strong>photo thank you card</strong> that captures the 
+               moment or gift you're grateful for. This visual reminder makes your gratitude more personal and memorable.</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516534775068-ba3e7458af70?w=400&h=300&fit=crop"
+                        alt="Thank you card with photo">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?w=400&h=300&fit=crop"
+                        alt="Handmade DIY thank you card">
+                </div>
+            </div>
+
+            <h2>3. Watercolor Floral Thank You Card</h2>
+            <p>Add artistic beauty with <strong>watercolor thank you card techniques</strong> featuring delicate floral 
+               designs. Each card becomes a mini work of art that expresses gratitude with elegance and creativity.</p>
+
+            <h2>4. Interactive "Pay It Forward" Card</h2>
+            <p>Create an engaging <strong>interactive thank you card</strong> with tear-off coupons for acts of kindness 
+               the recipient can "pay forward." This unique approach spreads gratitude beyond just your relationship.</p>
+
+            <h2>5. Quilled Nature Thank You Card</h2>
+            <p><strong>Paper quilling for thank you cards</strong> allows you to create delicate, intricate nature-inspired 
+               designs like flowers, leaves, or birds. These 3D elements add texture and beauty to your expression of gratitude.</p>
+
+            <h2>6. Seed Paper Plantable Thank You Card</h2>
+            <p>Create an eco-friendly <strong>plantable thank you card</strong> embedded with seeds that the recipient 
+               can plant. This living thank you continues to grow and bloom, symbolizing how their kindness continues 
+               to flourish.</p>
+
+            <h2>7. Origami Envelope Surprise Card</h2>
+            <p>Fold <strong>origami thank you card elements</strong> that create a beautiful envelope design with a 
+               surprise message inside. The intricate folding process itself becomes part of the gratitude expression.</p>
+
+            <h2>8. Embroidered Thank You Message Card</h2>
+            <p>Add texture and permanence with <strong>hand-embroidered thank you cards</strong> featuring your message 
+               or design. This textile approach creates a keepsake that can be displayed long after it's received.</p>
+
+            <h2>9. Recipe Share Thank You Card</h2>
+            <p>Create a thoughtful <strong>recipe thank you card</strong> sharing a favorite recipe, especially if you're 
+               thanking someone for a meal or hospitality. Include personal notes about why this recipe is special to you.</p>
+
+            <h2>10. Gratitude Jar Mini Card</h2>
+            <p>Design a <strong>mini gratitude jar thank you card</strong> with small folded notes inside, each containing 
+               a different reason you're thankful. This interactive card lets the recipient discover multiple expressions 
+               of gratitude.</p>
+
+            <div class="highlight-box"
+                style="text-align: center; border-left: none; border-top: 4px solid var(--primary);">
+                <h3><i class="fas fa-heart"></i> Ready to Create Your Perfect Thank You Card?</h3>
+                <p>Don't have time to craft from scratch? Use <strong>EGreet's free online thank you card maker</strong>
+                    to design beautiful, heartfelt cards in under 5 minutes!</p>
+                <a href="/thank-you/create" class="nav-btn signup" style="display: inline-block; margin-top: 1.5rem;"><i
+                        class="fas fa-heart"></i> Create Thank You Card Now
+                </a>
+            </div>
+        </article>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 class="faq-title"><i class="fas fa-comments"></i> Frequently Asked Questions About Thank You Cards</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What should I write in a professional thank you card?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Professional thank you cards should be concise yet sincere. Start with a specific reference to what 
+                    you're thankful for, mention the impact it had, and express your appreciation clearly. Keep it 
+                    professional but warm. For interviews, thank them for their time and reiterate your interest in the position.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How soon should I send a thank you card?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    For gifts and events, send within 1-2 weeks. For interviews, send within 24-48 hours. For hospitality 
+                    or special favors, aim for within a week. The sooner the better, but a late thank you card is always 
+                    better than none at all. Promptness shows you genuinely value their kindness.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How can I make my thank you cards more meaningful?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Be specific about what you're thankful for and how it affected you. Include personal details or memories 
+                    related to their kindness. Handwrite your message whenever possible. Consider including a small photo 
+                    or memento. Most importantly, be sincere and let your genuine gratitude shine through your words.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What's the difference between thank you cards for different occasions?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Wedding thank you cards should mention the specific gift and how you'll use it. Business thank you cards 
+                    should be professional and relationship-focused. Birthday thank you cards can be more casual and personal. 
+                    Sympathy thank you cards should acknowledge their support during difficult times. Tailor your message 
+                    to the occasion and relationship.
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="/logo.webp" alt="EGreet" class="footer-logo">
+                <h3>EGreet</h3>
+                <p>Create beautiful, personalized cards for every occasion. From birthdays to weddings, 
+                   express your feelings with our free online card maker.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#features">Features</a></li>
+                    <li><a href="/#cards">Card Categories</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Popular Cards</h4>
+                <ul>
+                    <li><a href="/birthday/create">Birthday Cards</a></li>
+                    <li><a href="/valentine/create">Valentine Cards</a></li>
+                    <li><a href="/anniversary/create">Anniversary Cards</a></li>
+                    <li><a href="/wedding/create">Wedding Cards</a></li>
+                    <li><a href="/thank-you/create">Thank You Cards</a></li>
+                    <li><a href="/congratulations/create">Congratulations Cards</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="/help">Help Center</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                    <li><a href="/sitemap">Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 EGreet. All rights reserved. Made with <i class="fas fa-heart" style="color: #10b981;"></i> for spreading gratitude and appreciation.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navbarMenu = document.getElementById('navbarMenu');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            navbarMenu.classList.toggle('active');
+        });
+
+        // FAQ accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Image lightbox effect
+        const featuredImage = document.querySelector('.blog-featured-image');
+        const galleryImages = document.querySelectorAll('.gallery-item img');
+
+        function createLightbox(img) {
+            const lightbox = document.createElement('div');
+            lightbox.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                cursor: pointer;
+            `;
+            
+            const lightboxImg = document.createElement('img');
+            lightboxImg.src = img.src;
+            lightboxImg.style.cssText = `
+                max-width: 90%;
+                max-height: 90%;
+                object-fit: contain;
+                border-radius: 8px;
+            `;
+            
+            lightbox.appendChild(lightboxImg);
+            document.body.appendChild(lightbox);
+            
+            lightbox.addEventListener('click', () => {
+                document.body.removeChild(lightbox);
+            });
+        }
+
+        featuredImage.addEventListener('click', () => createLightbox(featuredImage));
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => createLightbox(img));
+        });
+    </script>
+</body>
+
+</html>

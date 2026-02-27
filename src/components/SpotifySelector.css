@@ -1,0 +1,222 @@
+.spotify-selector {
+    width: 100%;
+}
+
+.spotify-search-box {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.spotify-search-box input {
+    flex: 1;
+}
+
+.spotify-search-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    background: rgba(26, 26, 26, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.spotify-search-btn:hover:not(:disabled) {
+    background: rgba(26, 26, 26, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.spotify-search-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.spotify-results {
+    max-height: 300px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.spotify-result-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.spotify-result-item:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(4px);
+}
+
+.spotify-result-item:last-child {
+    margin-bottom: 0;
+}
+
+.spotify-album-art {
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.spotify-song-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.spotify-song-name {
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 0.25rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.spotify-artist-name {
+    font-size: 0.85rem;
+    color: #2d2d2d;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.spotify-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.spotify-preview-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(30, 215, 96, 0.8);
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.spotify-preview-btn:hover {
+    background: rgba(30, 215, 96, 1);
+    transform: scale(1.1);
+}
+
+.spotify-select-btn {
+    padding: 0.5rem 1rem;
+    background: rgba(26, 26, 26, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.spotify-select-btn:hover {
+    background: rgba(26, 26, 26, 0.9);
+    transform: translateY(-1px);
+}
+
+.spotify-selected {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(30, 215, 96, 0.15);
+    border: 2px solid rgba(30, 215, 96, 0.3);
+    border-radius: 12px;
+}
+
+.spotify-selected svg:first-child {
+    color: #1ed760;
+    flex-shrink: 0;
+}
+
+.spotify-selected-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.spotify-selected-name {
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 0.25rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.spotify-selected-artist {
+    font-size: 0.85rem;
+    color: #2d2d2d;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.spotify-remove-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 0, 0, 0.7);
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.spotify-remove-btn:hover {
+    background: rgba(255, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .spotify-search-box {
+        flex-direction: column;
+    }
+
+    .spotify-search-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .spotify-result-item {
+        flex-wrap: wrap;
+    }
+
+    .spotify-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}

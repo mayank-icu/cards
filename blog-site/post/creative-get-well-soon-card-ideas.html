@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Performance Optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Inter:wght@200;300;400;500;600;700;800&family=Comfortaa:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+
+    <!-- SEO Meta Tags -->
+    <title>10 Creative Get Well Soon Card Ideas That Send Healing Wishes | EGreet Blog 2024</title>
+    <meta name="title" content="10 Creative Get Well Soon Card Ideas That Send Healing Wishes | EGreet Blog">
+    <meta name="description"
+        content="Discover 10 thoughtful DIY get well soon card ideas in 2024. From healing wishes cards to recovery support designs, learn how to create meaningful get well soon cards with EGreet's free card maker.">
+    <meta name="keywords"
+        content="get well soon card ideas, creative get well soon cards, DIY get well soon cards, handmade get well soon cards, healing wishes cards, recovery support cards, online get well soon card maker, digital get well soon cards, get well soon card designs 2024">
+    <meta name="author" content="EGreet Team">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="10 Creative Get Well Soon Card Ideas That Send Healing Wishes">
+    <meta property="og:description"
+        content="Discover 10 thoughtful and creative get well soon card ideas. From DIY crafts to digital designs with EGreet.">
+    <meta property="og:url" content="https://egreet.in/blog/post/creative-get-well-soon-card-ideas.html">
+    <meta property="og:site_name" content="EGreet">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=630&fit=crop">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://egreet.in/blog/post/creative-get-well-soon-card-ideas.html">
+
+    <style>
+        :root {
+            /* Premium Color Palette (Matching Main Site) */
+            --primary-gradient: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            --secondary-gradient: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+
+            --primary: #22c55e;
+            --primary-dark: #16a34a;
+            --secondary: #60a5fa;
+            --accent: #34d399;
+
+            --bg-primary: #faf8f5;
+            --bg-secondary: #fefdfb;
+            --bg-tertiary: #f5f2ed;
+            --bg-card: rgba(254, 253, 251, 0.95);
+
+            --text-primary: #2d2a26;
+            --text-secondary: #5a5651;
+            --text-muted: #8a8681;
+
+            --border-color: rgba(34, 197, 94, 0.15);
+            --shadow-sm: 0 2px 8px rgba(34, 197, 94, 0.08);
+            --shadow-md: 0 4px 16px rgba(34, 197, 94, 0.12);
+            --shadow-lg: 0 8px 32px rgba(34, 197, 94, 0.16);
+
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-subheading: 'Libre Baskerville', serif;
+            --font-body: 'Inter', sans-serif;
+            --font-accent: 'Comfortaa', cursive;
+
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+
+            --transition-base: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Navbar (Matching React App) */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition-base);
+            background: transparent;
+            padding: 1rem 0;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-sm);
+            padding: 0.5rem 0;
+        }
+
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .brand-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: var(--font-accent);
+        }
+
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition-base);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .nav-btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-base);
+        }
+
+        .nav-btn.login {
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .nav-btn.login:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .nav-btn.signup {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-btn.signup:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background-color: var(--text-primary);
+            transition: var(--transition-base);
+        }
+
+        /* Blog Layout */
+        .blog-wrapper {
+            padding-top: 120px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-bottom: 4rem;
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 0 1.5rem;
+        }
+
+        .blog-category {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .blog-title {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .blog-meta i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+
+        .blog-featured-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 4rem;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .blog-featured-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 48px rgba(34, 197, 94, 0.2);
+        }
+
+        .blog-content {
+            padding: 0 1.5rem;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-content strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .blog-content h2 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--text-primary);
+            margin: 3rem 0 1.5rem;
+            position: relative;
+        }
+
+        .blog-content h3 {
+            font-family: var(--font-subheading);
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        /* Content Cards & Tips */
+        .highlight-box {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow-sm);
+            margin: 2rem 0;
+            transition: var(--transition-base);
+        }
+
+        .highlight-box:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(5px);
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .tip-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-base);
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px) rotate(1deg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-top: 5rem;
+            padding: 3rem;
+            background: white;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--text-primary);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+            transition: var(--transition-base);
+        }
+
+        .faq-item:hover {
+            background: var(--bg-tertiary);
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.15rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-primary);
+        }
+
+        .faq-answer {
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            display: none;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+            animation: fadeSlideDown 0.3s ease;
+        }
+
+        .faq-icon {
+            transition: var(--transition-base);
+            color: var(--primary);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Footer (Matching React App) */
+        .site-footer {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 4rem 2rem 1rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: var(--font-accent);
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #eee;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #fff;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            opacity: 0.7;
+            transition: 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeSlideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .blog-title {
+                font-size: 2.2rem;
+            }
+
+            .navbar-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .blog-featured-image {
+                height: 300px;
+            }
+        }
+
+        .brand-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .footer-logo {
+            height: 50px;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-brand">
+                <img src="/logo.webp" alt="EGreet" class="brand-logo">
+            </a>
+
+            <div class="navbar-menu" id="navbarMenu">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/#features" class="nav-link">Features</a>
+                <a href="/#cards" class="nav-link">Cards</a>
+                <a href="/about" class="nav-link">About</a>
+                <a href="/blog" class="nav-link active">Blog</a>
+                <a href="/contact" class="nav-link">Contact</a>
+
+                <div id="authButtons" style="display: flex; gap: 1rem; align-items: center;">
+                    <a href="/login" class="nav-btn login">Login</a>
+                    <a href="/register" class="nav-btn signup">Sign Up</a>
+                </div>
+            </div>
+
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="blog-wrapper">
+        <header class="blog-header">
+            <span class="blog-category">Get Well Soon Ideas</span>
+            <h1 class="blog-title">10 Creative Get Well Soon Card Ideas That Send Healing Wishes</h1>
+            <div class="blog-meta">
+                <span><i class="fas fa-user"></i> EGreet Team</span>
+                <span><i class="fas fa-calendar"></i> February 17, 2024</span>
+                <span><i class="fas fa-clock"></i> 6 min read</span>
+            </div>
+        </header>
+
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=630&fit=crop"
+            alt="Creative Get Well Soon Card Ideas" class="blog-featured-image">
+
+        <article class="blog-content">
+            <p>Get well soon cards are thoughtful ways to show you care and send healing wishes to someone 
+               recovering from illness or injury. Whether you're creating <strong>healing wishes cards</strong>, 
+               <strong>recovery support designs</strong>, or <strong>comforting get well cards</strong>, this comprehensive 
+               guide covers everything you need to craft meaningful messages of support. While store-bought cards 
+               are convenient, creating <strong>personalized get well soon cards</strong> shows your genuine concern 
+               and can brighten someone's recovery journey. Discover <strong>unique get well soon card ideas</strong> 
+               that will bring comfort and encouragement to your loved ones.</p>
+
+            <h2>1. Healing Garden Pop-Up Card</h2>
+            <p>Create a beautiful <strong>3D garden pop-up card</strong> with flowers, butterflies, and 
+               sunshine elements that spring to life when opened. This uplifting design symbolizes growth, 
+               healing, and new beginnings.</p>
+
+            <div class="highlight-box">
+                <h3>What You'll Need:</h3>
+                <ul>
+                    <li>Soft pastel cardstock (green, yellow, blue)</li>
+                    <li>Precision scissors and craft knife</li>
+                    <li>Quick-dry glue stick</li>
+                    <li>Metal ruler and sharp pencil</li>
+                    <li>Flower stickers or stamps</li>
+                    <li>Ribbon for decorative accents</li>
+                </ul>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title"><i class="fas fa-heart"></i> Healing Tip</div>
+                <p>Include encouraging messages about strength and recovery. Focus on positive thoughts 
+                   and remind them they're not alone in their healing journey. Gentle, uplifting messages 
+                   work best for get well cards.</p>
+            </div>
+
+            <h2>2. "Thinking of You" Cloud Card</h2>
+            <p>Design a comforting <strong>cloud-shaped card</strong> with soft cotton details and 
+               thoughtful messages floating like raindrops. This gentle design provides comfort and shows 
+               you're thinking of them during their recovery.</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516534775068-ba3e7458af70?w=400&h=300&fit=crop"
+                        alt="Thoughtful get well soon card">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?w=400&h=300&fit=crop"
+                        alt="Handmade DIY get well soon card">
+                </div>
+            </div>
+
+            <h2>3. "Get Well Soon" Medicine Bottle Card</h2>
+            <p>Create a clever <strong>medicine bottle card</strong> with a label that reads "Daily Dose of 
+               Love and Laughter." This playful approach brings humor and comfort to the recovery process.</p>
+
+            <h2>4. "Strength and Courage" Lion Card</h2>
+            <p>Design an inspiring <strong>lion-themed card</strong> symbolizing strength and courage 
+               during challenging times. This powerful design reminds them of their inner resilience.</p>
+
+            <h2>5. Quilled Rainbow Hope Card</h2>
+            <p><strong>Paper quilling for get well cards</strong> allows you to create delicate rainbow 
+               designs that symbolize hope and the promise of brighter days ahead after the storm.</p>
+
+            <h2>6. "Warm Hugs" Interactive Card</h2>
+            <p>Create a cozy <strong>hug-themed card</strong> with foldable arms that wrap around a 
+               comforting message. This tactile design provides a sense of warmth and comfort.</p>
+
+            <h2>7. "Recovery Journey" Path Card</h2>
+            <p>Design a thoughtful <strong>path or road card</strong> showing the journey from illness 
+               to health, with encouraging messages along the way. This visual metaphor represents the 
+               healing process.</p>
+
+            <h2>8. "Sunshine and Smiles" Bright Card</h2>
+            <p>Create a cheerful <strong>sunshine-themed card</strong> with bright yellow and orange colors 
+               that bring warmth and positivity. This uplifting design helps chase away gloomy thoughts.</p>
+
+            <h2>9. "Get Well Tree" Growing Card</h2>
+            <p>Design a meaningful <strong>tree growth card</strong> where a bare tree gradually becomes 
+               leafy and vibrant, symbolizing the healing process and return to health.</p>
+
+            <h2>10. "Comfort and Care" Blanket Card</h2>
+            <p>Create a cozy <strong>blanket-shaped card</strong> with soft textures and comforting messages 
+               that wrap around the recipient like a warm hug. This nurturing design provides emotional 
+               comfort during recovery.</p>
+
+            <div class="highlight-box"
+                style="text-align: center; border-left: none; border-top: 4px solid var(--primary);">
+                <h3><i class="fas fa-heart"></i> Ready to Create Your Perfect Get Well Soon Card?</h3>
+                <p>Don't have time to craft from scratch? Use <strong>EGreet's free online get well soon card maker</strong>
+                    to design comforting, healing cards in under 5 minutes!</p>
+                <a href="/get-well-soon/create" class="nav-btn signup" style="display: inline-block; margin-top: 1.5rem;"><i
+                        class="fas fa-heart"></i> Create Get Well Soon Card Now
+                </a>
+            </div>
+        </article>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 class="faq-title"><i class="fas fa-comments"></i> Frequently Asked Questions About Get Well Soon Cards</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What should I write in a get well soon card?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Include warm wishes for their recovery, expressions of care and concern, and 
+                   encouragement for their healing journey. Share positive thoughts, offer help if appropriate, 
+                   and remind them they're strong and capable. Keep messages uplifting, sincere, and focused 
+                   on their well-being and recovery.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    When should I send a get well soon card?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Send cards as soon as you learn about their illness or injury. For minor illnesses, 
+                   within a few days is appropriate. For serious conditions or surgeries, send within a week. 
+                   For extended recovery periods, consider sending follow-up cards to show continued support 
+                   throughout their healing journey.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Should I include a gift with my get well soon card?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Gifts are optional but often appreciated. Consider their situation and recovery needs. 
+                   Good options include books, magazines, puzzles, cozy socks, tea or soup, flowers, or gift 
+                   cards for food delivery services. For hospital stays, check visitor policies and gift restrictions 
+                   before sending items.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How can I make get well soon cards more comforting?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Use soft, calming colors and gentle imagery. Include personal touches like shared 
+                   memories or inside jokes. Add comforting elements like pressed flowers or soft textures. 
+                   Write messages that focus on their strength and the positive future. Consider including 
+                   quotes about healing and resilience for extra encouragement.
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="/logo.webp" alt="EGreet" class="footer-logo">
+                <h3>EGreet</h3>
+                <p>Create beautiful, personalized cards for every occasion. From birthdays to weddings, 
+                   express your feelings with our free online card maker.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#features">Features</a></li>
+                    <li><a href="/#cards">Card Categories</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Popular Cards</h4>
+                <ul>
+                    <li><a href="/birthday/create">Birthday Cards</a></li>
+                    <li><a href="/valentine/create">Valentine Cards</a></li>
+                    <li><a href="/anniversary/create">Anniversary Cards</a></li>
+                    <li><a href="/wedding/create">Wedding Cards</a></li>
+                    <li><a href="/thank-you/create">Thank You Cards</a></li>
+                    <li><a href="/congratulations/create">Congratulations Cards</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="/help">Help Center</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                    <li><a href="/sitemap">Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 EGreet. All rights reserved. Made with <i class="fas fa-heart" style="color: #22c55e;"></i> for sending healing wishes and spreading comfort.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navbarMenu = document.getElementById('navbarMenu');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            navbarMenu.classList.toggle('active');
+        });
+
+        // FAQ accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Image lightbox effect
+        const featuredImage = document.querySelector('.blog-featured-image');
+        const galleryImages = document.querySelectorAll('.gallery-item img');
+
+        function createLightbox(img) {
+            const lightbox = document.createElement('div');
+            lightbox.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                cursor: pointer;
+            `;
+            
+            const lightboxImg = document.createElement('img');
+            lightboxImg.src = img.src;
+            lightboxImg.style.cssText = `
+                max-width: 90%;
+                max-height: 90%;
+                object-fit: contain;
+                border-radius: 8px;
+            `;
+            
+            lightbox.appendChild(lightboxImg);
+            document.body.appendChild(lightbox);
+            
+            lightbox.addEventListener('click', () => {
+                document.body.removeChild(lightbox);
+            });
+        }
+
+        featuredImage.addEventListener('click', () => createLightbox(featuredImage));
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => createLightbox(img));
+        });
+    </script>
+</body>
+
+</html>

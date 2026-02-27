@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://egreet.in/sitemap.xml
+
+# Block system and non-content paths
+Disallow: /api/
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /sw.js
+Disallow: /manifest.json
+
+# Block private/user pages
+Disallow: /profile
+Disallow: /saved-cards
+Disallow: /login
+Disallow: /register
+
+# Block creator/tool pages from crawling focus
+Disallow: /create
+Disallow: /*/create
+Disallow: /view/
+Disallow: /wish/
+Disallow: /ask/
+
+# Block low-value transitional pages
+Disallow: /coming-soon

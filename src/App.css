@@ -1,0 +1,241 @@
+/* File: src/App.css */
+/* Amatic SC font removed - now using Playfair Display */
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-primary);
+  font-family: 'Inter', sans-serif;
+  /* Optimize for mobile performance */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  body {
+    /* Reduce paint operations on mobile */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Optimize scrolling performance */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Reduce shadow complexity on mobile */
+  * {
+    box-shadow: none !important;
+  }
+  
+  /* Only apply shadows to specific elements */
+  .navbar.scrolled,
+  .occasion-card:hover,
+  .user-dropdown {
+    box-shadow: var(--shadow-md) !important;
+  }
+}
+
+/* Horizontal scrolling feature cards for mobile */
+.feature-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+  position: relative; /* Added for dots positioning */
+}
+
+@media (max-width: 768px) {
+  .feature-cards-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    /* Hide scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  
+  .feature-cards-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  
+  /* Add dots indicator */
+  .feature-cards-container::after {
+    content: '...';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #94a3b8;
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    font-weight: 300;
+  }
+  
+  .feature-cards-container.piano-theme::after {
+    color: #2563eb;
+  }
+  
+  .feature-cards-container.bouquet-theme::after {
+    color: #ff6b9d;
+  }
+}
+
+.feature-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+  cursor: default;
+  border: 1px solid #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  .feature-card {
+    min-width: 300px; /* Increased from 280px for better readability */
+    max-width: 320px; /* Fixed max width */
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+#main {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 4em;
+  color: var(--text-primary);
+  margin-bottom: 30px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+}
+
+#inputWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+#inputLabel {
+  font-size: 2em;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+}
+
+#inputWish {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.5em;
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+
+#btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #66A8B8;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+.created-jar {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.links input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
+}
+
+.create-jar {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.create-jar form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.create-jar input {
+  padding: 15px;
+  font-size: 1.2em;
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
+}
+
+.create-jar button {
+  padding: 15px;
+  background: #66A8B8;
+  border: none;
+  color: white;
+  font-size: 1.2em;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.view-wishes {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.wishes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.wish-item {
+  padding: 15px;
+  background: var(--bg-card);
+  border-radius: 5px;
+  border: 2px solid var(--border-color);
+  font-size: 1.5em;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+}

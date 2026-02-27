@@ -1,0 +1,228 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary-color: #27525C;
+  --secondary-color: #66A8B8;
+  --accent-color: #ffed93;
+  --bg-gradient-start: #c2e9f0;
+  --bg-gradient-end: #c2e9f0;
+  --text-color: #27525C;
+  --input-bg: rgba(255, 255, 255, 0.15);
+  --input-border: rgba(255, 255, 255, 0.2);
+  --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+
+.wish-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  font-family: 'Amatic SC', cursive;
+}
+
+.wish-content {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.wish-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px var(--shadow-color);
+}
+
+.wish-counter {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.jar-wrapper {
+  position: relative;
+  width: 251px;
+  margin: 0 auto;
+}
+
+.input-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.wish-form {
+  width: 100%;
+}
+
+.input-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.input-label {
+  position: absolute;
+  top: -1.5rem;
+  left: 0.5rem;
+  color: var(--text-color);
+  font-size: 1.8rem;
+  transition: all 0.3s ease;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.input-label-active {
+  transform: translateY(-5px) scale(0.9);
+  opacity: 1;
+}
+
+.wish-input {
+  width: 100%;
+  padding: 0.8rem 3rem 0.8rem 1rem;
+  border-radius: 12px;
+  background-color: var(--input-bg);
+  border: 2px solid var(--input-border);
+  color: black;
+  font-family: 'Amatic SC', cursive;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.wish-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}
+
+.wish-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(255, 237, 147, 0.3);
+}
+
+.wish-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: var(--input-border);
+}
+
+.wish-button {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--accent-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.wish-button:hover:not(:disabled) {
+  transform: translateY(-50%) scale(1.1);
+  color: #ffd700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.wish-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.jar-svg {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* Animations */
+@keyframes wishFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2) rotate(180deg);
+  }
+}
+
+@keyframes starFall {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(100px) scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(200px) scale(0.6);
+  }
+}
+
+.fa-star {
+  animation: starTwinkle 2s infinite ease-in-out;
+}
+
+#star {
+  display: none;
+  filter: drop-shadow(0 0 8px var(--accent-color));
+}
+
+#star.star-animate {
+  animation: starFall 1s ease-in-out forwards;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .wish-title {
+    font-size: 3rem;
+  }
+  
+  .wish-counter {
+    font-size: 1.3rem;
+  }
+  
+  .wish-input {
+    font-size: 1.3rem;
+    padding: 0.6rem 2.5rem 0.6rem 0.8rem;
+  }
+  
+  .input-label {
+    font-size: 1.5rem;
+  }
+}
+
+/* Glass effect for input */
+.wish-input {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}

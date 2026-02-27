@@ -1,0 +1,195 @@
+.occasion-card {
+    position: relative;
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+    height: 100%;
+    min-height: 260px;
+    box-shadow: var(--shadow-sm);
+    /* Optimize for mobile performance */
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+/* Minimal overlay - only on hover */
+.occasion-card:not(.no-overlay)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.02);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.occasion-card:not(.no-overlay):hover::before {
+    opacity: 1;
+}
+
+/* Minimal hover effect */
+.occasion-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.occasion-card-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    opacity: 0.6;
+    transition: height var(--transition-base);
+}
+
+.occasion-card:hover .occasion-card-gradient {
+    height: 4px;
+}
+
+.occasion-card-content {
+    position: relative;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+.occasion-card-icon {
+    width: 130px;
+    height: 130px;
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    background: var(--bg-tertiary);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.occasion-card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.occasion-card-icon img.loaded {
+    opacity: 1;
+}
+
+.icon-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-md);
+    background: var(--primary-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: var(--shadow-sm);
+}
+
+.occasion-card-title {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary);
+    font-family: 'Playfair Display', serif;
+    letter-spacing: -0.2px;
+}
+
+.occasion-card-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+    flex: 1;
+}
+
+.occasion-card-arrow {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-full);
+    background: var(--bg-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    margin-top: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .occasion-card {
+        min-height: 220px;
+    }
+
+    .occasion-card-content {
+        padding: var(--spacing-sm);
+    }
+
+    .occasion-card-icon {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 0.75rem;
+        padding: 0.75rem;
+    }
+
+    .icon-placeholder {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+    }
+
+    .occasion-card-title {
+        font-size: 1.2rem;
+    }
+
+    .occasion-card-description {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .occasion-card-arrow {
+        width: 36px;
+        height: 36px;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .occasion-card {
+        min-height: 200px;
+    }
+
+    .occasion-card-icon {
+        width: 80px;
+        height: 80px;
+        padding: 0.5rem;
+    }
+
+    .icon-placeholder {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .occasion-card-title {
+        font-size: 1.1rem;
+    }
+}

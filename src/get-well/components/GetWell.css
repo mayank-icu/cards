@@ -1,0 +1,243 @@
+.get-well-container {
+    min-height: 100vh;
+    background: var(--bg-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Nunito', sans-serif;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+.get-well-card {
+    background: rgba(255, 255, 255, 1);
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    max-width: 650px;
+    width: 100%;
+    position: relative;
+    z-index: 1000;
+}
+
+.card-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header-icon {
+    color: #0d9488;
+    margin-bottom: 15px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.get-well-title {
+    color: #0d9488;
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.subtitle {
+    color: #718096;
+    font-size: 1.1rem;
+}
+
+.form-section {
+    margin-bottom: 30px;
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(168, 237, 234, 0.1) 0%, rgba(254, 214, 227, 0.1) 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(13, 148, 136, 0.1);
+}
+
+.section-title {
+    color: #0d9488;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    color: #4a5568;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    border-color: #0d9488;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+    transform: translateY(-2px);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    color: #2d3748;
+    padding: 18px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.submit-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(13, 148, 136, 0.3);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* View Page Styles */
+.get-well-view-card {
+    background: white;
+    padding: 60px;
+    border-radius: 30px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+    max-width: 700px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(168, 237, 234, 0.08) 0%, rgba(254, 214, 227, 0.08) 100%);
+    z-index: 0;
+}
+
+.card-content {
+    position: relative;
+    z-index: 1;
+}
+
+.healing-emoji {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.healing-emoji svg {
+    color: #0d9488;
+}
+
+.get-well-header {
+    color: #0d9488;
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.message-box {
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    padding: 35px;
+    border-radius: 20px;
+    margin: 30px 0;
+    font-style: italic;
+    color: #2d3748;
+    line-height: 2;
+    font-size: 1.3rem;
+    border-left: 5px solid #0d9488;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+}
+
+.message-icon {
+    color: #0d9488;
+    flex-shrink: 0;
+}
+
+.message-box p {
+    margin: 0;
+}
+
+.closing-text {
+    margin-top: 40px;
+    font-size: 1.2rem;
+    color: #4a5568;
+    line-height: 1.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.closing-text svg {
+    color: #0d9488;
+}
+
+.loading-spinner,
+.error-message {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #4a5568;
+    padding: 50px;
+}
+
+@media (max-width: 768px) {
+    .get-well-title {
+        font-size: 2.2rem;
+    }
+
+    .get-well-header {
+        font-size: 2.2rem;
+    }
+
+    .message-box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .healing-emoji {
+        gap: 10px;
+    }
+
+    .healing-emoji svg {
+        width: 30px;
+        height: 30px;
+    }
+}

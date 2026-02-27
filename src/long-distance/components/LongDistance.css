@@ -1,0 +1,220 @@
+/* Long Distance Card Styles */
+.ld-container {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #1a202c, #2d3748);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.ld-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 0 20px rgba(66, 153, 225, 0.3);
+}
+
+.ld-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    background: linear-gradient(to right, #63b3ed, #9f7aea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.ld-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ld-input {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #4a5568;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.ld-input:focus {
+    border-color: #63b3ed;
+    box-shadow: 0 0 10px rgba(99, 179, 237, 0.2);
+    outline: none;
+}
+
+.ld-btn {
+    background: linear-gradient(to right, #4299e1, #667eea);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.ld-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(66, 153, 225, 0.4);
+}
+
+/* View Page */
+.ld-view-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #0f172a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.map-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg');
+    background-size: cover;
+    background-position: center;
+    filter: invert(1);
+}
+
+.connection-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #63b3ed, transparent);
+    transform: translate(-50%, -50%);
+    animation: pulse-line 2s infinite;
+}
+
+@keyframes pulse-line {
+    0% {
+        opacity: 0.3;
+        width: 0%;
+    }
+
+    50% {
+        opacity: 1;
+        width: 80%;
+    }
+
+    100% {
+        opacity: 0.3;
+        width: 0%;
+    }
+}
+
+.location-dot {
+    width: 20px;
+    height: 20px;
+    background: #f56565;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 20px #f56565;
+    animation: pulse-dot 1.5s infinite;
+}
+
+.loc-1 {
+    left: 10%;
+}
+
+.loc-2 {
+    right: 10%;
+}
+
+@keyframes pulse-dot {
+    0% {
+        transform: translateY(-50%) scale(1);
+        box-shadow: 0 0 0 0 rgba(245, 101, 101, 0.7);
+    }
+
+    70% {
+        transform: translateY(-50%) scale(1.2);
+        box-shadow: 0 0 0 20px rgba(245, 101, 101, 0);
+    }
+
+    100% {
+        transform: translateY(-50%) scale(1);
+        box-shadow: 0 0 0 0 rgba(245, 101, 101, 0);
+    }
+}
+
+.message-card {
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 600px;
+    text-align: center;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.distance-text {
+    font-size: 1.2rem;
+    color: #a0aec0;
+    margin-bottom: 20px;
+}
+
+.main-message {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.plane-icon {
+    position: absolute;
+    top: 45%;
+    left: 10%;
+    font-size: 2rem;
+    animation: fly 4s linear infinite;
+}
+
+@keyframes fly {
+    0% {
+        left: 10%;
+        transform: rotate(0deg);
+    }
+
+    100% {
+        left: 90%;
+        transform: rotate(0deg);
+    }
+}

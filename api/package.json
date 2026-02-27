@@ -1,0 +1,18 @@
+{
+  "name": "egreet-recaptcha-api",
+  "version": "1.0.0",
+  "description": "reCAPTCHA Enterprise verification API for EGreet",
+  "main": "verify-recaptcha.js",
+  "scripts": {
+    "start": "node verify-recaptcha.js",
+    "dev": "netlify-lambda serve .",
+    "build": "netlify-lambda build ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "netlify-lambda": "^2.0.15"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

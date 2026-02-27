@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Performance Optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Inter:wght@200;300;400;500;600;700;800&family=Comfortaa:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+
+    <!-- SEO Meta Tags -->
+    <title>10 Creative Birthday Card Ideas That Will Make Their Day Special | EGreet Blog 2024</title>
+    <meta name="title" content="10 Creative Birthday Card Ideas That Will Make Their Day Special | EGreet Blog">
+    <meta name="description"
+        content="Discover 10 creative DIY birthday card ideas in 2024. From pop-up cards to digital designs, learn how to create personalized birthday cards with EGreet's free card maker.">
+    <meta name="keywords"
+        content="birthday card ideas, creative birthday cards, DIY birthday cards, handmade birthday cards, personalized birthday cards, online birthday card maker, digital birthday cards, birthday card designs 2024">
+    <meta name="author" content="EGreet Team">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="10 Creative Birthday Card Ideas That Will Make Their Day Special">
+    <meta property="og:description"
+        content="Discover 10 unique and creative birthday card ideas. From DIY crafts to digital designs with EGreet.">
+    <meta property="og:url" content="https://egreet.in/blog/post/creative-birthday-card-ideas.html">
+    <meta property="og:site_name" content="EGreet">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1464375117522-1311d6a5b81f?w=1200&h=630&fit=crop">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://egreet.in/blog/post/creative-birthday-card-ideas.html">
+
+    <style>
+        :root {
+            /* Premium Color Palette (Matching Main Site) */
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+
+            --primary: #667eea;
+            --primary-dark: #5568d3;
+            --secondary: #f5576c;
+            --accent: #4facfe;
+
+            --bg-primary: #faf8f5;
+            --bg-secondary: #fefdfb;
+            --bg-tertiary: #f5f2ed;
+            --bg-card: rgba(254, 253, 251, 0.95);
+
+            --text-primary: #2d2a26;
+            --text-secondary: #5a5651;
+            --text-muted: #8a8681;
+
+            --border-color: rgba(102, 126, 234, 0.15);
+            --shadow-sm: 0 2px 8px rgba(102, 126, 234, 0.08);
+            --shadow-md: 0 4px 16px rgba(102, 126, 234, 0.12);
+            --shadow-lg: 0 8px 32px rgba(102, 126, 234, 0.16);
+
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-subheading: 'Libre Baskerville', serif;
+            --font-body: 'Inter', sans-serif;
+            --font-accent: 'Comfortaa', cursive;
+
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+
+            --transition-base: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Navbar (Matching React App) */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition-base);
+            background: transparent;
+            padding: 1rem 0;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-sm);
+            padding: 0.5rem 0;
+        }
+
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .brand-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: var(--font-accent);
+        }
+
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition-base);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .nav-btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-base);
+        }
+
+        .nav-btn.login {
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .nav-btn.login:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .nav-btn.signup {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-btn.signup:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background-color: var(--text-primary);
+            transition: var(--transition-base);
+        }
+
+        /* Blog Layout */
+        .blog-wrapper {
+            padding-top: 120px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-bottom: 4rem;
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 0 1.5rem;
+        }
+
+        .blog-category {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(102, 126, 234, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .blog-title {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .blog-meta i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+
+        .blog-featured-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 4rem;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .blog-featured-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 48px rgba(102, 126, 234, 0.2);
+        }
+
+        .blog-content {
+            padding: 0 1.5rem;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-content strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .blog-content h2 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--text-primary);
+            margin: 3rem 0 1.5rem;
+            position: relative;
+        }
+
+        .blog-content h3 {
+            font-family: var(--font-subheading);
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        /* Content Cards & Tips */
+        .highlight-box {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow-sm);
+            margin: 2rem 0;
+            transition: var(--transition-base);
+        }
+
+        .highlight-box:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(5px);
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .tip-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-base);
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px) rotate(1deg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-top: 5rem;
+            padding: 3rem;
+            background: white;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--text-primary);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+            transition: var(--transition-base);
+        }
+
+        .faq-item:hover {
+            background: var(--bg-tertiary);
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.15rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-primary);
+        }
+
+        .faq-answer {
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            display: none;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+            animation: fadeSlideDown 0.3s ease;
+        }
+
+        .faq-icon {
+            transition: var(--transition-base);
+            color: var(--primary);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Read Next */
+        .read-next {
+            margin-top: 5rem;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .read-next-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-base);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .blog-card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-card-content {
+            padding: 1.5rem;
+        }
+
+        .blog-card-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .blog-card-excerpt {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* Comments Section */
+        .comments-section {
+            margin-top: 5rem;
+            background: white;
+            padding: 3rem;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .comment-form {
+            margin-bottom: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition-base);
+            background: var(--bg-primary);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .submit-btn {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-base);
+            font-size: 1rem;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .comment-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .comment-item {
+            display: flex;
+            gap: 1rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            animation: fadeSlideDown 0.4s ease;
+        }
+
+        .comment-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .comment-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+            color: var(--text-primary);
+        }
+
+        .comment-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .comment-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Footer (Matching React App) */
+        .site-footer {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 4rem 2rem 1rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: var(--font-accent);
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #eee;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #fff;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            opacity: 0.7;
+            transition: 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeSlideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .blog-title {
+                font-size: 2.2rem;
+            }
+
+            .navbar-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .blog-featured-image {
+                height: 300px;
+            }
+        }
+
+        .brand-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .footer-logo {
+            height: 50px;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-brand">
+                <img src="/logo.webp" alt="EGreet" class="brand-logo">
+            </a>
+
+            <div class="navbar-menu" id="navbarMenu">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/#features" class="nav-link">Features</a>
+                <a href="/#cards" class="nav-link">Cards</a>
+                <a href="/about" class="nav-link">About</a>
+                <a href="/blog" class="nav-link active">Blog</a>
+                <a href="/contact" class="nav-link">Contact</a>
+
+                <div id="authButtons" style="display: flex; gap: 1rem; align-items: center;">
+                    <a href="/login" class="nav-btn login">Login</a>
+                    <a href="/register" class="nav-btn signup">Sign Up</a>
+                </div>
+            </div>
+
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="blog-wrapper">
+        <header class="blog-header">
+            <span class="blog-category">Birthday Card Ideas</span>
+            <h1 class="blog-title">10 Creative Birthday Card Ideas That Will Make Their Day Special</h1>
+            <div class="blog-meta">
+                <span><i class="fas fa-user"></i> EGreet Team</span>
+                <span><i class="fas fa-calendar"></i> January 15, 2024</span>
+                <span><i class="fas fa-clock"></i> 5 min read</span>
+            </div>
+        </header>
+
+        <img src="https://images.unsplash.com/photo-1464375117522-1311d6a5b81f?w=1200&h=630&fit=crop"
+            alt="Creative Birthday Card Ideas" class="blog-featured-image">
+
+        <article class="blog-content">
+            <p>Birthday cards are more than just paper and ink – they're personal messages that carry love, memories,
+                and well wishes. Whether you're looking for <strong>DIY birthday card ideas</strong>, <strong>handmade
+                    birthday card designs</strong>, or <strong>creative birthday card inspiration</strong>, this
+                comprehensive guide covers everything you need. While store-bought cards are convenient, creating
+                <strong>personalized birthday cards</strong> shows you truly care. Discover <strong>unique birthday card
+                    ideas</strong> that will make your loved ones feel extra special on their big day!
+            </p>
+
+            <h2>1. Pop-Up Surprise Card</h2>
+            <p>Create a magical moment with a <strong>3D pop-up birthday card</strong> that reveals a surprise when
+                opened. This impressive technique is easier than it looks and never fails to delight recipients of all
+                ages!</p>
+
+            <div class="highlight-box">
+                <h3>What You'll Need:</h3>
+                <ul>
+                    <li>Heavyweight cardstock (2 contrasting colors)</li>
+                    <li>Precision scissors and craft knife</li>
+                    <li>Quick-dry glue stick</li>
+                    <li>Metal ruler and sharp pencil</li>
+                    <li>Decorative elements (washi tape, stickers, metallic markers)</li>
+                </ul>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title"><i class="fas fa-lightbulb"></i> Pro Tip</div>
+                <p>Start with simple geometric shapes like hearts, stars, or cupcakes before attempting more complex
+                    pop-up designs. The secret is measuring twice and cutting once. Practice with scrap paper first!</p>
+            </div>
+
+            <h2>2. Photo Collage Memory Lane Card</h2>
+            <p>Transform precious memories into a beautiful <strong>photo birthday card collage</strong> that tells your
+                story together. This personal touch makes the recipient feel truly cherished and creates a keepsake
+                they'll display for years.</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=400&h=300&fit=crop"
+                        alt="Birthday card with photo collage">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?w=400&h=300&fit=crop"
+                        alt="Handmade DIY birthday card">
+                </div>
+            </div>
+
+            <h2>3. Watercolor Wonder Cards</h2>
+            <p>Add artistic flair with <strong>watercolor birthday card techniques</strong> that create unique, dreamy
+                effects. Each card becomes a mini work of art! Try wet-on-wet blending, salt textures, or splatter
+                effects for stunning results.</p>
+
+            <h2>4. Interactive Spinner Card</h2>
+            <p>Create an engaging <strong>interactive birthday card</strong> with a spinning element that reveals
+                different messages or images. This playful touch appeals to both kids and adults who appreciate creative
+                surprises!</p>
+
+            <h2>5. Quilled Paper Art Birthday Cards</h2>
+            <p><strong>Paper quilling for birthday cards</strong> involves rolling and shaping thin paper strips into
+                intricate designs. From delicate flowers to abstract patterns, the possibilities are endless and truly
+                impressive!</p>
+
+            <h2>6. Light-Up LED Birthday Card</h2>
+            <p>Combine traditional paper crafts with simple electronics to create a <strong>LED birthday card</strong>
+                that literally lights up! This tech-infused approach is perfect for kids and tech enthusiasts alike.</p>
+
+            <h2>7. Origami Accordion Birthday Card</h2>
+            <p>Fold <strong>origami birthday card elements</strong> that pop out when opened. From paper cranes to
+                cherry blossoms, these 3D elements add depth and cultural significance to your creation.</p>
+
+            <h2>8. Embroidered Birthday Card</h2>
+            <p>Add texture and dimension with <strong>hand-embroidered birthday cards</strong> on cardstock. This unique
+                combination of textile and paper crafts creates a tactile experience that's truly one-of-a-kind.</p>
+
+            <h2>9. Chalkboard Message Card</h2>
+            <p>Create a reusable <strong>chalkboard birthday card</strong> with chalkboard paint that allows the
+                recipient to write their own messages or display it as home decor long after their birthday celebration.
+            </p>
+
+            <h2>10. Mini Album Birthday Card</h2>
+            <p>Design a <strong>mini album birthday card</strong> that opens up to reveal multiple pages like a tiny
+                photo album. Perfect for including multiple photos, memories, and heartfelt messages in one thoughtful
+                package.</p>
+
+            <div class="highlight-box"
+                style="text-align: center; border-left: none; border-top: 4px solid var(--primary);">
+                <h3><i class="fas fa-sparkles"></i> Ready to Create Your Perfect Birthday Card?</h3>
+                <p>Don't have time to craft from scratch? Use <strong>EGreet's free online birthday card maker</strong>
+                    to design beautiful, personalized cards in under 5 minutes!</p>
+                <a href="/birthday/create" class="nav-btn signup" style="display: inline-block; margin-top: 1.5rem;"><i
+                        class="fas fa-palette"></i> Create Birthday Card Now
+                </a>
+            </div>
+        </article>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 class="faq-title"><i class="fas fa-comments"></i> Frequently Asked Questions About Birthday Cards</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is the best paper for handmade birthday cards?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Heavyweight cardstock (80lb or 216gsm and up) is ideal for the card base as it stands up well
+                    without flopping. For decorative layers, lighter patterned paper or standard cardstock (65lb) works
+                    perfectly. If you're creating watercolor cards, use watercolor paper (140lb minimum) to prevent
+                    warping.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How can I make my birthday cards look professional?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Use a bone folder for crisp, clean creases. Measure accurately with a metal ruler. Use quality
+                    adhesive that doesn't warp paper (like tombow mono glue or double-sided tape). Keep your hands clean
+                    to avoid smudges. Invest in precision cutting tools like a paper trimmer for straight edges.
+                    Practice consistent spacing and alignment.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How long does it take to make a handmade birthday card?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Simple cards can be created in 15-30 minutes. More complex designs with pop-ups, quilling, or
+                    embroidery may take 1-3 hours depending on your skill level. Digital cards on EGreet can be designed
+                    in just 5 minutes with professional results!
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What should I write in a personalized birthday card?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Include a personal message that references shared memories, inside jokes, or specific qualities you
+                    appreciate about the birthday person. Be genuine and heartfelt. Add well wishes for the coming year.
+                    Consider their personality when choosing your tone—funny, sentimental, or inspirational. Avoid
+                    generic greetings.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Where can I find birthday card making inspiration?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Pinterest, Instagram, and craft blogs like EGreet are excellent sources for 2024 birthday card
+                    trends! You can also visit craft stores to see store-bought cards and try to recreate designs you
+                    like. YouTube tutorials are perfect for learning new techniques step-by-step.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I create digital birthday cards online for free?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Absolutely! EGreet offers a completely free online birthday card maker with beautiful templates and
+                    customization options. You can create, personalize, and share stunning digital birthday cards
+                    without any design experience. No software download or subscription required—100% free forever!
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What are the benefits of handmade birthday cards vs store-bought?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Handmade cards show extra thought and effort, demonstrating how much you care. They can be fully
+                    personalized to the recipient's interests and personality. Each one is unique and one-of-a-kind.
+                    They often become treasured keepsakes displayed for years. They're more meaningful and memorable
+                    than mass-produced cards, making the recipient feel truly special.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What's the easiest DIY birthday card idea for beginners?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    A simple watercolor wash background with a handwritten message is perfect for beginners—just blend
+                    2-3 colors with water on cardstock. You can also try a photo collage card using printed photos,
+                    decorative washi tape, and markers. Both require minimal supplies, no advanced skills, and look
+                    impressive!
+                </div>
+            </div>
+        </section>
+
+        <!-- Read Next -->
+        <section class="read-next">
+            <h2 class="section-title"><i class="fas fa-book-open"></i> Continue Reading</h2>
+            <div class="read-next-grid">
+                <a href="#" class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=400&h=300&fit=crop"
+                        alt="Anniversary Gift Ideas" class="blog-card-img">
+                    <div class="blog-card-content">
+                        <h3 class="blog-card-title">Top 10 Anniversary Gift Ideas for Every Year</h3>
+                        <p class="blog-card-excerpt">Find the perfect gift to celebrate your love story, from
+                            traditional to modern anniversary presents...</p>
+                    </div>
+                </a>
+                <a href="#" class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=300&fit=crop"
+                        alt="Wedding Card Etiquette" class="blog-card-img">
+                    <div class="blog-card-content">
+                        <h3 class="blog-card-title">Wedding Card Etiquette 101: Complete Guide</h3>
+                        <p class="blog-card-excerpt">Everything you need to know about writing heartfelt wedding wishes
+                            and choosing the right card...</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Comments Section -->
+        <section class="comments-section">
+            <h2 class="section-title"><i class="fas fa-comments"></i> Share Your Thoughts</h2>
+
+            <div class="comment-form">
+                <form id="commentForm">
+                    <div class="form-group">
+                        <label class="form-label">Name *</label>
+                        <input type="text" id="commentName" class="form-input" required placeholder="Your Name"
+                            maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Comment * <small style="color: var(--text-muted);">(10-500
+                                characters)</small></label>
+                        <textarea id="commentText" class="form-textarea" rows="4" required
+                            placeholder="Share your favorite birthday card ideas or ask a question..." minlength="10"
+                            maxlength="500"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn"><i class="fas fa-paper-plane"></i> Post
+                        Comment</button>
+                </form>
+            </div>
+
+            <div class="comment-list" id="commentsList">
+                <div style="text-align: center; color: var(--text-muted);">Loading comments...</div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section brand">
+                <img src="/logo.webp" alt="EGreet" class="footer-logo">
+                <p>Creating moments, sharing love through beautiful greeting cards.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/saved-cards">My Cards</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:hello@egreet.in"><i class="fas fa-envelope"></i> hello@egreet.in</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 EGreet. Made with <i class="fas fa-heart" style="color: red; margin: 0 5px;"></i> for you.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCrQpjjjRLIKdOpPzaefCNM_73uZzymW8o",
+            authDomain: "egreet.in",
+            projectId: "cards-f5abc",
+            storageBucket: "cards-f5abc.firebasestorage.app",
+            messagingSenderId: "112535761615",
+            appId: "1:112535761615:web:2fc0d6d8a65d63fb157dba",
+            measurementId: "G-Y90HK3VW9X",
+            databaseURL: "https://cards-f5abc-default-rtdb.firebaseio.com"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navbarMenu = document.getElementById('navbarMenu');
+        const authButtons = document.getElementById('authButtons');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+        });
+
+        // Auth State Management
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                authButtons.innerHTML = `
+                    <a href="/saved-cards" class="nav-link">My Cards</a>
+                    <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--primary-gradient); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                        ${user.email.charAt(0).toUpperCase()}
+                    </div>
+                `;
+            } else {
+                authButtons.innerHTML = `
+                    <a href="/login" class="nav-btn login">Login</a>
+                    <a href="/register" class="nav-btn signup">Sign Up</a>
+                `;
+            }
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.querySelector('.faq-question').addEventListener('click', () => {
+                // Close other FAQs
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle current FAQ
+                item.classList.toggle('active');
+            });
+        });
+
+        // Comments Logic with Spam Protection
+        const commentForm = document.getElementById('commentForm');
+        const commentsList = document.getElementById('commentsList');
+        const POST_ID = 'creative-birthday-card-ideas';
+
+        // Spam Protection - Bad Words Filter
+        const badWords = ['spam', 'viagra', 'casino', 'porn', 'xxx', 'hate', 'kill', 'stupid', 'idiot', 'moron', 'fuck', 'shit', 'damn'];
+
+        function containsBadWords(text) {
+            const lowerText = text.toLowerCase();
+            return badWords.some(word => lowerText.includes(word));
+        }
+
+        function validateComment(name, content) {
+            // Check for empty fields
+            if (!name.trim() || !content.trim()) {
+                return { valid: false, message: 'Please fill in all fields.' };
+            }
+
+            // Check minimum length
+            if (name.trim().length < 2) {
+                return { valid: false, message: 'Name must be at least 2 characters long.' };
+            }
+
+            if (content.trim().length < 10) {
+                return { valid: false, message: 'Comment must be at least 10 characters long.' };
+            }
+
+            // Check maximum length
+            if (content.trim().length > 500) {
+                return { valid: false, message: 'Comment must be less than 500 characters.' };
+            }
+
+            // Check for spam/hate speech
+            if (containsBadWords(name) || containsBadWords(content)) {
+                return { valid: false, message: 'Your comment contains inappropriate language. Please be respectful.' };
+            }
+
+            // Check for suspicious patterns (all caps)
+            if (content === content.toUpperCase() && content.length > 20) {
+                return { valid: false, message: 'Please don\'t use ALL CAPS in your comment.' };
+            }
+
+            // Check for excessive URLs
+            const urlCount = (content.match(/http/gi) || []).length;
+            if (urlCount > 1) {
+                return { valid: false, message: 'Comments with multiple links are not allowed.' };
+            }
+
+            return { valid: true };
+        }
+
+        // Load Comments
+        function loadComments() {
+            db.collection('blog_comments')
+                .where('postId', '==', POST_ID)
+                .where('approved', '==', true)
+                .orderBy('timestamp', 'desc')
+                .onSnapshot((snapshot) => {
+                    if (snapshot.empty) {
+                        commentsList.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 2rem;">No comments yet. Be the first to share your thoughts! <i class="fas fa-comment-dots"></i></div>';
+                        return;
+                    }
+
+                    let html = '';
+                    snapshot.forEach(doc => {
+                        const data = doc.data();
+                        const date = data.timestamp ? new Date(data.timestamp.toDate()).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Just now';
+                        const initial = data.name.charAt(0).toUpperCase();
+
+                        html += `
+                            <div class="comment-item">
+                                <div class="comment-avatar">${initial}</div>
+                                <div class="comment-content">
+                                    <h4>${escapeHtml(data.name)}</h4>
+                                    <span class="comment-date"><i class="fas fa-clock"></i> ${date}</span>
+                                    <p class="comment-text">${escapeHtml(data.content)}</p>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    commentsList.innerHTML = html;
+                }, (error) => {
+                    console.error("Error loading comments:", error);
+                    commentsList.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 2rem;"><i class="fas fa-spinner fa-spin"></i> Comments are loading... If issues persist, please refresh the page.</div>';
+                });
+        }
+
+        // Post Comment with Validation
+        commentForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            const name = document.getElementById('commentName').value;
+            const content = document.getElementById('commentText').value;
+
+            // Validate comment
+            const validation = validateComment(name, content);
+            if (!validation.valid) {
+                alert(validation.message);
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Posting...';
+
+            try {
+                await db.collection('blog_comments').add({
+                    postId: POST_ID,
+                    name: name.trim(),
+                    content: content.trim(),
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                    approved: true
+                });
+
+                commentForm.reset();
+                alert('Comment posted successfully! Thank you for sharing your thoughts.');
+            } catch (error) {
+                console.error("Error posting comment:", error);
+                alert('Failed to post comment. Please try again.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Post Comment';
+            }
+        });
+
+        // Utility to prevent XSS attacks
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Initialize
+        loadComments();
+
+    </script>
+</body>
+
+</html>

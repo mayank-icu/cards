@@ -1,0 +1,725 @@
+/* Shared Form Styles with Glassmorphism */
+
+.form-page-container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.25rem 0.75rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.form-page-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.form-page-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(1px);
+}
+
+.glass-form-card {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 1.75rem;
+    animation: slideInUp 0.6s ease-out;
+    will-change: transform, opacity;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.glass-form-header {
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+
+.glass-form-header .header-icon {
+    color: #1a1a1a;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+    margin-bottom: 1rem;
+}
+
+.glass-form-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+.glass-form-subtitle {
+    font-size: 1rem;
+    color: #2d2d2d;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.glass-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.glass-form-section {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.75rem;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.glass-section-title svg {
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.15));
+    color: #2d2d2d;
+}
+
+.glass-form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+}
+
+.glass-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.glass-form-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.glass-form-input,
+.glass-form-textarea,
+.glass-form-select {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    font-size: 1rem;
+    color: #1a1a1a;
+    transition: all 0.3s ease;
+    outline: none;
+    font-weight: 500;
+}
+
+.glass-form-input::placeholder,
+.glass-form-textarea::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.glass-form-input:focus,
+.glass-form-textarea:focus,
+.glass-form-select:focus {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+.glass-form-textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+}
+
+.suggestion-buttons {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.suggestion-buttons::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+}
+
+.suggestion-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 0.75rem 1.25rem;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #e5e7eb;
+    border-radius: 2rem;
+    color: #4b5563;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.suggestion-btn:hover {
+    background: #ffffff;
+    border-color: #db2777;
+    color: #db2777;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.image-upload-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.image-preview {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 4px solid white;
+    border-bottom: 4px solid #22c55e;
+    /* Green light indicator */
+}
+
+.image-preview-container {
+    position: relative;
+    width: 100%;
+}
+
+.image-preview-container img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    border: 2px solid white;
+    border-bottom: 4px solid #22c55e;
+    /* Green light indicator */
+}
+
+.remove-image-btn {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.remove-image-btn:hover {
+    background: rgba(255, 0, 0, 0.9);
+    transform: scale(1.05);
+}
+
+.upload-label-glass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px dashed rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+.upload-label-glass:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+}
+
+.upload-label-glass svg {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    color: #2d2d2d;
+}
+
+.glass-submit-btn {
+    width: 100%;
+    padding: 1.25rem;
+    background: linear-gradient(135deg, #db2777 0%, #be185d 100%);
+    color: white;
+    border-radius: 1rem;
+    font-weight: 800;
+    font-size: 1.25rem;
+    transition: all 0.3s;
+    margin-top: 1rem;
+    box-shadow: 0 10px 20px -5px rgba(219, 39, 119, 0.4);
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: none;
+}
+
+.glass-submit-btn:hover:not(:disabled) {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 20px 30px -10px rgba(219, 39, 119, 0.6);
+}
+
+.glass-submit-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.glass-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.form-back-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #1a1a1a;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+    z-index: 2;
+}
+
+.form-back-button:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.unsaved-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 9999;
+}
+
+.unsaved-modal {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    padding: 1.25rem;
+}
+
+.unsaved-modal h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #111827;
+}
+
+.unsaved-modal p {
+    margin: 0;
+    color: #374151;
+    font-weight: 500;
+}
+
+.unsaved-modal-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.unsaved-modal-actions button {
+    flex: 1;
+    border: none;
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+.unsaved-stay-btn {
+    background: rgba(17, 24, 39, 0.08);
+    color: #111827;
+}
+
+.unsaved-discard-btn {
+    background: linear-gradient(135deg, #db2777 0%, #be185d 100%);
+    color: #fff;
+}
+
+/* Spotify Integration Styles */
+.spotify-add-song-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, rgba(30, 215, 96, 0.15), rgba(30, 215, 96, 0.1));
+    border: 2px dashed rgba(30, 215, 96, 0.4);
+    border-radius: 14px;
+    color: #1a1a1a;
+    font-weight: 700;
+    font-size: 1.0625rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.spotify-add-song-btn:hover {
+    background: linear-gradient(135deg, rgba(30, 215, 96, 0.25), rgba(30, 215, 96, 0.15));
+    border-color: rgba(30, 215, 96, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(30, 215, 96, 0.2);
+}
+
+.spotify-add-song-btn svg {
+    color: #1ed760;
+}
+
+/* Selected Song Card Styles */
+.selected-song-card {
+    display: flex;
+    align-items: center;
+    gap: 1.125rem;
+    padding: 1.125rem;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.selected-song-card:hover {
+    border-color: rgba(30, 215, 96, 0.5);
+    box-shadow: 0 6px 20px rgba(30, 215, 96, 0.15);
+}
+
+.song-album-art {
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.song-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.song-name {
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 0.375rem 0;
+    font-size: 1.0625rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-artist {
+    font-size: 0.9375rem;
+    color: #666;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+}
+
+.song-actions {
+    display: flex;
+    gap: 0.625rem;
+    flex-shrink: 0;
+}
+
+.song-play-btn,
+.song-remove-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.song-play-btn {
+    background: linear-gradient(135deg, #1ed760, #1db954);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(30, 215, 96, 0.3);
+}
+
+.song-play-btn:hover {
+    background: linear-gradient(135deg, #1db954, #17a348);
+    transform: scale(1.15);
+    box-shadow: 0 6px 16px rgba(30, 215, 96, 0.4);
+}
+
+.song-play-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #9ca3af;
+    box-shadow: none;
+}
+
+.song-remove-btn {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.song-remove-btn:hover {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: #fff;
+    transform: scale(1.15);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .glass-form-card {
+        padding: 1.5rem;
+    }
+
+    .glass-form-title {
+        font-size: 1.5rem;
+    }
+
+    .glass-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .suggestion-buttons {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
+
+    .suggestion-btn {
+        width: auto !important;
+        flex: 0 0 auto;
+    }
+
+    .selected-song-card {
+        flex-wrap: wrap;
+    }
+
+    .song-actions {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Radio Button Styles */
+.radio-group {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    min-width: 140px;
+}
+
+.radio-option:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.radio-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-custom {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    margin-right: 0.75rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.radio-custom::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.radio-label {
+    color: #1f2937;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.radio-option:hover .radio-label {
+color: #111827;
+}
+
+.radio-option.selected .radio-label {
+color: #111827;
+font-weight: 600;
+}
+
+.radio-option input[type="radio"]:checked + .radio-custom {
+border-color: white;
+background: rgba(255, 255, 255, 0.3);
+}
+
+.radio-option input[type="radio"]:checked + .radio-custom::after {
+transform: translate(-50%, -50%) scale(1);
+}
+
+.radio-option input[type="radio"]:checked ~ .radio-label {
+color: #111827;
+font-weight: 600;
+}
+
+.radio-option input[type="radio"]:focus + .radio-custom {
+box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+/* Date Option Buttons */
+.date-options {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.date-option-btn {
+    padding: 8px 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: #1f2937;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    min-width: 80px;
+    text-align: center;
+}
+
+.date-option-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #111827;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.date-option-btn.active {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #111827;
+    font-weight: 600;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.date-option-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .glass-form-card,
+    .glass-submit-btn,
+    .suggestion-btn,
+    .spotify-add-song-btn,
+    .upload-label-glass {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+    }
+}

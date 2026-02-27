@@ -1,0 +1,94 @@
+/* Selected Song Card Styles */
+.selected-song-card {
+    display: flex;
+    align-items: center;
+    gap: 1.125rem;
+    padding: 1.125rem;
+    background: linear-gradient(135deg, rgba(30, 215, 96, 0.12), rgba(30, 215, 96, 0.08));
+    border: 2px solid rgba(30, 215, 96, 0.3);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.selected-song-card:hover {
+    border-color: rgba(30, 215, 96, 0.5);
+    box-shadow: 0 6px 20px rgba(30, 215, 96, 0.15);
+}
+
+.song-album-art {
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.song-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.song-name {
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 0.375rem 0;
+    font-size: 1.0625rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-artist {
+    font-size: 0.9375rem;
+    color: #666;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+}
+
+.song-actions {
+    display: flex;
+    gap: 0.625rem;
+    flex-shrink: 0;
+}
+
+.song-play-btn,
+.song-remove-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.song-play-btn {
+    background: linear-gradient(135deg, #1ed760, #1db954);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(30, 215, 96, 0.3);
+}
+
+.song-play-btn:hover {
+    background: linear-gradient(135deg, #1db954, #17a348);
+    transform: scale(1.15);
+    box-shadow: 0 6px 16px rgba(30, 215, 96, 0.4);
+}
+
+.song-remove-btn {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.song-remove-btn:hover {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: #fff;
+    transform: scale(1.15);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
