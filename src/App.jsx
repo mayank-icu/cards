@@ -673,8 +673,8 @@ function App() {
                 >
                   <div style={{ marginBottom: '1.5rem', color: '#2563eb' }}>
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                      <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
                     </svg>
                   </div>
                   <h3 style={{ fontSize: '1.3rem', color: '#1e40af', marginBottom: '0.5rem', fontFamily: "'Playfair Display', serif" }}>Play Piano</h3>
@@ -873,7 +873,7 @@ function App() {
                 maxWidth: '700px',
                 margin: '12px auto 0'
               }}>
-                Popular pages: <a href="/greeting-card-maker">online greeting card maker</a>, <a href="/greetings-card-maker">greetings card maker</a>, <a href="/congratulations-card-maker">congratulations card maker</a>, and <a href="/beautiful-cards">beautiful cards</a>.
+                Popular pages: <a href="/greeting-card-maker">online greeting card maker</a>, <a href="/free-ecard-maker">free online ecard maker</a>, <a href="/online-thank-you-card-maker">online thank you card maker</a>, and <a href="/beautiful-cards">beautiful cards</a>. E Greet helps you build memories.
               </p>
             </div>
 

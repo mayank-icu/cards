@@ -300,7 +300,7 @@ const CreateWedding = () => {
                                 <textarea
                                     required
                                     className="glass-form-textarea"
-                                    rows="5"
+                                    rows={5}
                                     placeholder="Write your invitation message or choose a suggestion above..."
                                     value={formData.message}
                                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -313,6 +313,7 @@ const CreateWedding = () => {
                                 value={customSlug}
                                 onChange={setCustomSlug}
                                 cardType="wedding"
+                                onValidationChange={() => { }}
                             />
                         </div>
 

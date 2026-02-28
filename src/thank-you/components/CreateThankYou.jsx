@@ -77,7 +77,7 @@ const CreateThankYou = () => {
 
         // Store original size
         setOriginalImageSize(file.size);
-        
+
         setUploading(true);
         try {
             // Compress image to target ~100KB
@@ -240,7 +240,7 @@ const CreateThankYou = () => {
                                 <textarea
                                     required
                                     className="glass-form-textarea"
-                                    rows="5"
+                                    rows={5}
                                     placeholder="Write your thank you message or choose a suggestion above..."
                                     value={formData.message}
                                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -385,6 +385,7 @@ const CreateThankYou = () => {
                                 value={customSlug}
                                 onChange={setCustomSlug}
                                 cardType="thank-you"
+                                onValidationChange={() => { }}
                             />
                         </div>
 

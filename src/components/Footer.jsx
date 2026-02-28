@@ -23,9 +23,8 @@ const Footer = () => {
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/cards">All Cards</Link></li>
                         <li><Link to="/greeting-card-maker">Greeting Card Maker</Link></li>
-                        <li><Link to="/greetings-card-maker">Greetings Card Maker</Link></li>
-                        <li><Link to="/congratulations-card-maker">Congratulations Card Maker</Link></li>
-                        <li><Link to="/beautiful-cards">Beautiful Cards</Link></li>
+                        <li><Link to="/free-ecard-maker">Free eCard Maker</Link></li>
+                        <li><Link to="/online-thank-you-card-maker">Thank You Card Maker</Link></li>
                         <li><Link to="/bouquet-card-maker">Bouquet Card Maker</Link></li>
                         <li><Link to="/about">About Us</Link></li>
                         <li><Link to="/contact">Contact Us</Link></li>

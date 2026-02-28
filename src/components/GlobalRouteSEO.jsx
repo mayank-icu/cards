@@ -54,17 +54,56 @@ const SELF_MANAGED_SEO_PATTERNS = [
   /^\/admin$/
 ];
 
+const generateBreadcrumbs = (pathname, title) => {
+  const parts = pathname.split('/').filter(Boolean);
+  if (parts.length === 0) return null;
+
+  const itemListElement = [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": BASE_URL
+    }
+  ];
+
+  let currentPath = '';
+  parts.forEach((part, index) => {
+    currentPath += `/${part}`;
+    let name = part.charAt(0).toUpperCase() + part.slice(1).replace(/-/g, ' ');
+    if (index === parts.length - 1 && title) {
+      name = title.split('|')[0].trim();
+    } else if (part === 'cards') {
+      name = 'Cards';
+    }
+    itemListElement.push({
+      "@type": "ListItem",
+      "position": index + 2,
+      "name": name,
+      "item": `${BASE_URL}${currentPath}`
+    });
+  });
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": itemListElement
+  };
+};
+
 const noIndexConfig = (title, description, pathname) => ({
   title,
   description,
   canonical: `${BASE_URL}${pathname}`,
-  noIndex: true
+  noIndex: true,
+  structuredData: generateBreadcrumbs(pathname, title)
 });
 
 const indexedConfig = (title, description, pathname) => ({
   title,
   description,
-  canonical: `${BASE_URL}${pathname}`
+  canonical: `${BASE_URL}${pathname}`,
+  structuredData: generateBreadcrumbs(pathname, title)
 });
 
 const toCreateTitle = (label) => `Create ${label} Online | EGreet`;

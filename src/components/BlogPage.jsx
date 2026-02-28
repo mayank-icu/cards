@@ -56,7 +56,7 @@ const BlogPage = () => {
             <p className="hero-eyebrow">EGreet Journal</p>
             <h1 className="hero-title">Card Ideas for Every Occasion</h1>
             <p className="hero-subtitle">
-              Browse all published blog posts, discover message ideas, and pick the perfect style for your next card.
+              Browse all published blog posts, discover message ideas, and pick the perfect style for your next card. EGreet is your go-to <a href="/free-ecard-maker" style={{ color: '#fff', textDecoration: 'underline' }}>free online ecard maker</a> and <a href="/greeting-card-maker" style={{ color: '#fff', textDecoration: 'underline' }}>online greeting card maker</a>.
             </p>
           </div>
         </div>
@@ -75,7 +75,7 @@ const BlogPage = () => {
                 className="search-input"
               />
             </div>
-            
+
             <div className="category-filters">
               <Filter size={20} className="filter-icon" />
               <div className="category-buttons">
@@ -145,7 +145,7 @@ const BlogPage = () => {
                       <div className="blog-card-category">{post.category}</div>
                     </div>
                   </div>
-                  
+
                   <div className="blog-card-content">
                     <h3 className="blog-card-title">{post.title}</h3>
                     <p className="blog-card-excerpt">{post.excerpt}</p>
@@ -159,7 +159,7 @@ const BlogPage = () => {
                         ))}
                       </div>
                     )}
-                    
+
                     <div className="blog-card-meta">
                       <div className="blog-card-author">
                         <User size={14} />
@@ -176,7 +176,7 @@ const BlogPage = () => {
                         </div>
                       )}
                     </div>
-                    
+
                     <div className="blog-card-read-more">
                       <span>Read More</span>
                     </div>

@@ -35,9 +35,6 @@ const SEO = ({
     },
   };
 
-  // Use custom structured data if provided, otherwise use default
-  const finalStructuredData = structuredData || defaultStructuredData;
-
   useEffect(() => {
     try {
       // Update document title
@@ -47,7 +44,7 @@ const SEO = ({
       const updateMetaTag = (name, content, property = null) => {
         const selector = property ? `meta[property="${property}"]` : `meta[name="${name}"]`;
         let meta = document.querySelector(selector);
-        
+
         if (!meta) {
           meta = document.createElement('meta');
           if (property) {
@@ -57,7 +54,7 @@ const SEO = ({
           }
           document.head.appendChild(meta);
         }
-        
+
         meta.setAttribute('content', content);
       };
 
@@ -100,27 +97,38 @@ const SEO = ({
       updateMetaTag('theme-color', '#667eea');
 
       // Update canonical URL
-      let canonical = document.querySelector('link[rel="canonical"]');
-      if (!canonical) {
-        canonical = document.createElement('link');
-        canonical.setAttribute('rel', 'canonical');
-        document.head.appendChild(canonical);
+      let canonicalEl = document.querySelector('link[rel="canonical"]');
+      if (!canonicalEl) {
+        canonicalEl = document.createElement('link');
+        canonicalEl.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonicalEl);
       }
-      canonical.setAttribute('href', finalUrl);
+      canonicalEl.setAttribute('href', finalUrl);
 
       // Update structured data
-      let structuredDataScript = document.querySelector('script[type="application/ld+json"]');
+      let structuredDataScript = document.querySelector('script[id="dynamic-structured-data"]');
       if (!structuredDataScript) {
         structuredDataScript = document.createElement('script');
         structuredDataScript.setAttribute('type', 'application/ld+json');
+        structuredDataScript.setAttribute('id', 'dynamic-structured-data');
         document.head.appendChild(structuredDataScript);
       }
-      structuredDataScript.textContent = JSON.stringify(finalStructuredData);
+
+      let payload;
+      if (Array.isArray(structuredData)) {
+        payload = [defaultStructuredData, ...structuredData];
+      } else if (structuredData) {
+        payload = [defaultStructuredData, structuredData];
+      } else {
+        payload = defaultStructuredData;
+      }
+
+      structuredDataScript.textContent = JSON.stringify(payload);
 
     } catch (error) {
       console.error('SEO update error:', error);
     }
-  }, [title, description, image, url, canonical, finalUrl, type, keywords, author, locale, siteName, noIndex, finalStructuredData]);
+  }, [title, description, image, url, canonical, finalUrl, type, keywords, author, locale, siteName, noIndex, structuredData]);
 
   // This component doesn't render anything visible
   return null;

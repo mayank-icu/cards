@@ -110,6 +110,8 @@ const CongratulationsCardMakerPage = lazy(() => import('./pages/CongratulationsC
 const GreetingsCardMakerPage = lazy(() => import('./pages/GreetingsCardMakerPage.jsx'))
 const BeautifulCardsPage = lazy(() => import('./pages/BeautifulCardsPage.jsx'))
 const BouquetCardMakerPage = lazy(() => import('./pages/BouquetCardMakerPage.jsx'))
+const FreeEcardMakerPage = lazy(() => import('./pages/FreeEcardMakerPage.jsx'))
+const OnlineThankYouCardMakerPage = lazy(() => import('./pages/OnlineThankYouCardMakerPage.jsx'))
 
 // Minimal card view for fast loading
 const MinimalCardView = lazy(() => import('./components/MinimalCardView.jsx'))
@@ -180,6 +182,16 @@ createRoot(document.getElementById('root')).render(
             <Route path="/bouquet-card-maker" element={
               <Suspense fallback={<LoadingSpinner />}>
                 <BouquetCardMakerPage />
+              </Suspense>
+            } />
+            <Route path="/free-ecard-maker" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <FreeEcardMakerPage />
+              </Suspense>
+            } />
+            <Route path="/online-thank-you-card-maker" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <OnlineThankYouCardMakerPage />
               </Suspense>
             } />
             <Route path="/cards/:occasion" element={

@@ -186,6 +186,7 @@ const WeddingPage = () => {
                     cardId={id}
                     title="Wedding"
                     subtitle={bride && groom ? `${bride} & ${groom}` : undefined}
+                    previewUrl={`${window.location.origin}/wedding/${id}`}
                 />
             </div>
 

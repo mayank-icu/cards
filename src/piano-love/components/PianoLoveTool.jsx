@@ -17,7 +17,7 @@ const loadLottie = () => import('lottie-react');
 const loadAnimationData = () => import('../../assets/animations/complete.json');
 
 // Toggle this between '' (relative), '.netlify/functions', or your Cloudflare Worker URL
-const API_BASE = 'https://midi-backend.themayankgamerz.workers.dev'; 
+const API_BASE = 'https://midi-backend.themayankgamerz.workers.dev';
 
 function PianoLoveTool() {
   const navigate = useNavigate();

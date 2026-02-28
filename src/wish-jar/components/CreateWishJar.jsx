@@ -231,7 +231,7 @@ const CreateWishJar = () => {
                 <textarea
                   required
                   className="glass-form-textarea"
-                  rows="5"
+                  rows={4}
                   placeholder="Write your wish or choose a suggestion above..."
                   value={formData.wish}
                   onChange={(e) => setFormData({ ...formData, wish: e.target.value })}
@@ -323,12 +323,13 @@ const CreateWishJar = () => {
             </div>
 
             <div className="glass-form-section">
-                <SlugInput
-                  value={customSlug}
-                  onChange={setCustomSlug}
-                  cardType="wish-jar"
-                />
-              </div>
+              <SlugInput
+                value={customSlug}
+                onChange={setCustomSlug}
+                cardType="wish-jar"
+                onValidationChange={() => { }}
+              />
+            </div>
             <button type="submit" className="glass-submit-btn" disabled={loading || uploading}>
               {loading ? 'Creating...' : 'CREATE'}
             </button>

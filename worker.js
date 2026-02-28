@@ -26,7 +26,7 @@ async function fetchSongs() {
       // Basic extraction of filename
       const parts = s.file.split('/');
       const filename = parts[parts.length - 1];
-      
+
       return {
         id: `s-${idx}-${filename.replace('.mid', '')}`,
         title: s.title,
@@ -167,6 +167,80 @@ function searchSongs(pool, query, url, limit = 25) {
   return results;
 }
 
+const BOT_AGENTS = [
+  'facebookexternalhit',
+  'twitterbot',
+  'linkedinbot',
+  'whatsapp',
+  'telegrambot',
+  'pinterest',
+  'slackbot',
+  'discordbot'
+];
+
+const getDynamicOgTags = (pathname) => {
+  const parts = pathname.split('/').filter(Boolean);
+  if (parts.length === 0) return null;
+
+  const category = parts[0];
+  const CARD_TYPES = {
+    'valentine': 'Valentine',
+    'birthday': 'Birthday',
+    'crush': 'Crush',
+    'apology': 'Apology',
+    'long-distance': 'Long Distance',
+    'invite': 'Invitation',
+    'capsule': 'Time Capsule',
+    'wish-jar': 'Wish Jar',
+    'anniversary': 'Anniversary',
+    'thank-you': 'Thank You',
+    'congratulations': 'Congratulations',
+    'get-well': 'Get Well Soon',
+    'graduation': 'Graduation',
+    'wedding': 'Wedding',
+    'new-baby': 'New Baby',
+    'sympathy': 'Sympathy',
+    'just-because': 'Just Because',
+    'bon-voyage': 'Bon Voyage',
+    'housewarming': 'Housewarming',
+    'friendship': 'Friendship',
+    'self-care': 'Self-Care',
+    'missing-you': 'Missing You',
+    'christmas': 'Christmas',
+    'new-year': 'New Year',
+    'easter': 'Easter',
+    'halloween': 'Halloween',
+    'good-luck': 'Good Luck',
+    'retirement': 'Retirement',
+    'thinking-of-you': 'Thinking of You',
+    'cat-lovers': 'Cat Lovers',
+    'balloon-celebration': 'Balloon Celebration',
+    'bouquet': 'Digital Bouquet',
+    'piano': 'Piano Love Song',
+    'view': 'Greeting'
+  };
+
+  if (category && CARD_TYPES[category]) {
+    const cardName = CARD_TYPES[category];
+    return {
+      title: `A Special ${cardName} Card For You | EGreet`,
+      description: `Someone has sent you a personalized ${cardName.toLowerCase()} card! Tap to view the beautiful message they created on EGreet.`,
+      image: 'https://egreet.in/og.webp' // Fallback to main OG image
+    };
+  }
+
+  // Generic static page SEO can also be handled here
+  if (category === 'cards') {
+    return {
+      title: 'Browse All Greeting Cards | EGreet',
+      description: 'Choose from 30+ categories of personalized digital greeting cards. Free and easy to make.',
+      image: 'https://egreet.in/og.webp'
+    };
+  }
+
+  return null;
+};
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -181,10 +255,11 @@ export default {
       return new Response(null, { headers });
     }
 
+    // Handle MIDI APIs
     if (url.pathname === '/api/midi-search') {
       const pool = await fetchSongs();
       const query = url.searchParams.get('q') || '';
-      
+
       let results;
       if (!query) {
         const shuffle = (array) => {
@@ -209,7 +284,7 @@ export default {
       } else {
         results = searchSongs(pool, query, request.url);
       }
-      
+
       return new Response(JSON.stringify({ results, meta: { totalIndexed: pool.length } }), { headers });
     }
 
@@ -240,6 +315,40 @@ export default {
       }
     }
 
-    return new Response('Not Found', { status: 404 });
+    // Handle OG Meta Tags for Social Sharing Bots
+    const userAgent = (request.headers.get('User-Agent') || '').toLowerCase();
+    const isBot = BOT_AGENTS.some(bot => userAgent.includes(bot));
+
+    if (isBot) {
+      const ogData = getDynamicOgTags(url.pathname);
+      if (ogData) {
+        const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>${ogData.title}</title>
+    <meta property="og:title" content="${ogData.title}">
+    <meta property="og:description" content="${ogData.description}">
+    <meta property="og:image" content="${ogData.image}">
+    <meta property="og:url" content="${request.url}">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${ogData.title}">
+    <meta name="twitter:description" content="${ogData.description}">
+    <meta name="twitter:image" content="${ogData.image}">
+</head>
+<body>
+    <script>window.location.replace("${request.url}");</script>
+</body>
+</html>`;
+        return new Response(html, {
+          headers: { 'Content-Type': 'text/html; charset=utf-8' }
+        });
+      }
+    }
+
+    // Default: Proxy request to Netlify frontend (assuming Worker is mapped to domain)
+    // If not mapped, this fallback is required to let Cloudflare pass the request through.
+    return fetch(request);
   }
 };

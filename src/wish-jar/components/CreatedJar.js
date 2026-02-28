@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
@@ -112,11 +113,11 @@ const CreatedJar = () => {
       });
 
       if (!response.ok) throw new Error('Email send failed');
-      
+
       const newCount = emailSentCount + 1;
       setEmailSentCount(newCount);
       localStorage.setItem(`emailSentCount_${jarId}`, newCount.toString());
-      
+
       setEmailPopup(false);
       setEmail('');
       toast.success('Email sent successfully!');
@@ -194,26 +195,26 @@ const CreatedJar = () => {
   return (
     <div className="created-jar">
       <Toaster position="top-center" reverseOrder={false} />
-      <h2 style={{ fontSize: "34px", textAlign: "center", marginBottom: "30px"}}>Your Wish Jar is Ready!</h2>
+      <h2 style={{ fontSize: "34px", textAlign: "center", marginBottom: "30px" }}>Your Wish Jar is Ready!</h2>
       <div className="links">
         <div>
           <h3>Share this link with friends to let them make wishes:</h3>
           <div style={{ display: 'flex', alignItems: 'center', marginBottom: "10px" }}>
-            <input readOnly value={wishLink} onClick={(e) => e.target.select()} style={{ flex: 1 }} />
+            <input readOnly value={wishLink} onClick={(e) => e.currentTarget.select()} style={{ flex: 1 }} />
             <Copy style={styles.icon} onClick={() => handleCopyLink(wishLink)} />
           </div>
         </div>
         <div>
           <h3>Use this link to view all wishes:</h3>
           <div style={{ display: 'flex', alignItems: 'center', marginBottom: "10px" }}>
-            <input readOnly value={viewLink} onClick={(e) => e.target.select()} style={{ flex: 1 }} />
+            <input readOnly value={viewLink} onClick={(e) => e.currentTarget.select()} style={{ flex: 1 }} />
             <Copy style={styles.icon} onClick={() => handleCopyLink(viewLink)} />
           </div>
         </div>
         {emailSentCount < 2 ? (
-          <button 
-            style={styles.button} 
-            onClick={() => setEmailPopup(true)} 
+          <button
+            style={styles.button}
+            onClick={() => setEmailPopup(true)}
             disabled={loading}
           >
             {loading ? 'Sending...' : 'Email Me'}
@@ -228,7 +229,7 @@ const CreatedJar = () => {
       {emailPopup && (
         <div style={styles.popup}>
           <div style={styles.popupContent}>
-            <h3 style={{marginBottom: "20px", fontSize: "25px"}}>Enter your email address:</h3>
+            <h3 style={{ marginBottom: "20px", fontSize: "25px" }}>Enter your email address:</h3>
             <input
               type="email"
               value={email}
@@ -238,16 +239,16 @@ const CreatedJar = () => {
               style={styles.input}
             />
             <div style={styles.buttonContainer}>
-              <button 
-                style={styles.button} 
-                onClick={handleSendEmail} 
+              <button
+                style={styles.button}
+                onClick={handleSendEmail}
                 disabled={loading}
               >
                 {loading ? 'Sending...' : 'Send'}
               </button>
-              <button 
-                style={{...styles.button, ...styles.cancelButton}} 
-                onClick={() => setEmailPopup(false)} 
+              <button
+                style={{ ...styles.button, ...styles.cancelButton }}
+                onClick={() => setEmailPopup(false)}
                 disabled={loading}
               >
                 Cancel

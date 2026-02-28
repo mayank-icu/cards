@@ -2,14 +2,14 @@
 export const seoConfig = {
   // Homepage
   home: {
-    title: 'EGreet – Create Beautiful Greeting Cards Online | Free Card Maker',
-    description: 'Create personalized greeting cards for any occasion. Free online card maker with professional templates for birthdays, Valentine\'s, weddings, anniversaries and more. No login required!',
-    keywords: 'greeting cards, card maker, online cards, personalized cards, free card creator, birthday cards, valentine cards, custom cards, card design, digital cards',
+    title: 'E Greet - Create Beautiful Greeting Cards Online | Free Card Maker',
+    description: 'Create personalized greeting cards for any occasion with E Greet. Free online card maker with professional templates for birthdays, Valentine\'s, weddings, anniversaries and more. No login required!',
+    keywords: 'E Greet, egreet, e greet card maker, greeting cards, card maker, online cards, personalized cards, free card creator',
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'WebApplication',
-      name: 'EGreet',
-      description: 'Create beautiful, personalized greeting cards for any occasion without any coding experience. Free online card maker with professional templates.',
+      name: 'E Greet',
+      description: 'Create beautiful, personalized greeting cards for any occasion without any coding experience with E Greet. Free online card maker with professional templates.',
       url: 'https://egreet.in',
       applicationCategory: 'DesignApplication',
       operatingSystem: 'Web',
@@ -24,7 +24,7 @@ export const seoConfig = {
       },
       featureList: [
         'Birthday Cards',
-        'Valentine Cards', 
+        'Valentine Cards',
         'Anniversary Cards',
         'Wedding Invitations',
         'Thank You Cards',
@@ -479,15 +479,41 @@ export const seoConfig = {
   },
 
   bouquetCardMaker: {
-    title: 'Bouquet Card Maker | Create Digital Flower Bouquet Cards | EGreet',
-    description: 'Create digital flower bouquet cards with personal notes and music on EGreet.',
-    keywords: 'bouquet card maker, digital flower bouquet, egreet bouquet',
+    title: 'Bouquet Card Maker | Create Digital Flower Bouquet Cards | E Greet',
+    description: 'Create digital flower bouquet cards with personal notes and music on E Greet.',
+    keywords: 'bouquet card maker, digital flower bouquet, egreet bouquet, e greet bouquet',
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
       name: 'Bouquet Card Maker',
       description: 'Create personalized digital bouquet greeting cards.',
       url: 'https://egreet.in/bouquet-card-maker'
+    }
+  },
+
+  freeEcardMaker: {
+    title: 'Free Ecard Maker Online | Design & Send ECards | E Greet',
+    description: 'Use the E Greet free ecard maker online to design and send beautiful digital ecards for any occasion. High-quality templates, zero cost.',
+    keywords: 'free ecard maker online, free ecard maker, make ecards free, e greet ecards, egreet',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: 'Free Ecard Maker',
+      description: 'Design and send free ecards online for any occasion.',
+      url: 'https://egreet.in/free-ecard-maker'
+    }
+  },
+
+  onlineThankYouCardMaker: {
+    title: 'Online Thank You Card Maker | Free & Custom Cards | E Greet',
+    description: 'Express your gratitude with the E Greet online thank you card maker. Create beautiful, customized thank you cards for free.',
+    keywords: 'online thank you card maker, thank you card maker free, custom thank you cards, e greet thank you, egreet gratitude',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: 'Online Thank You Card Maker',
+      description: 'Create beautiful, customized thank you cards for free online.',
+      url: 'https://egreet.in/online-thank-you-card-maker'
     }
   }
 };
@@ -496,18 +522,18 @@ export const seoConfig = {
 export const getSEOConfig = (path) => {
   // Remove leading slash and convert to lowercase
   const cleanPath = path.replace(/^\//, '').toLowerCase();
-  
+
   // Handle root path
   if (cleanPath === '' || cleanPath === 'home') {
     return seoConfig.home;
   }
-  
+
   // Handle card details pages
   if (cleanPath.startsWith('cards/')) {
     const cardType = cleanPath.replace('cards/', '');
     return seoConfig[cardType] || seoConfig.home;
   }
-  
+
   // Handle other specific pages
   const pageMap = {
     'about': seoConfig.about,
@@ -522,8 +548,10 @@ export const getSEOConfig = (path) => {
     'congratulations-card-maker': seoConfig.congratulationsCardMaker,
     'greetings-card-maker': seoConfig.greetingsCardMaker,
     'beautiful-cards': seoConfig.beautifulCards,
-    'bouquet-card-maker': seoConfig.bouquetCardMaker
+    'bouquet-card-maker': seoConfig.bouquetCardMaker,
+    'free-ecard-maker': seoConfig.freeEcardMaker,
+    'online-thank-you-card-maker': seoConfig.onlineThankYouCardMaker
   };
-  
+
   return pageMap[cleanPath] || seoConfig.home;
 };
