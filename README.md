@@ -24,8 +24,7 @@ A completely free platform for creating digital greeting cards. No ads, no login
 
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/egreet.git
-cd egreet
+git clone [https://github.com/yourusername/egreet.git](https://github.com/mayank-icu/cards.git)
 
 # Install dependencies
 npm install
