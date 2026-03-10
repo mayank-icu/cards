@@ -108,38 +108,34 @@ export const AuthProvider = ({ children }) => {
   }, [authInitialized, firebaseError]);
 
   // Initialize auth functions with error handling
-  const signup = async (name, email, password) => {
-    await initializeAuth();
-    if (firebaseError) throw new Error('Firebase is not available');
+  const signup = async (email, password) => {
+  await initializeAuth();
+  if (firebaseError) throw new Error('Firebase is not available');
+  try {
+    const { createUserWithEmailAndPassword } = await import('firebase/auth');
+    const { doc, setDoc } = await import('firebase/firestore');
+    const { auth, db } = await import('../firebase');
+    const result = await createUserWithEmailAndPassword(auth, email, password);
+
+    // Save user to database
     try {
-      const { createUserWithEmailAndPassword, updateProfile } = await import('firebase/auth');
-      const { doc, setDoc } = await import('firebase/firestore');
-      const { auth, db } = await import('../firebase');
-      const result = await createUserWithEmailAndPassword(auth, email, password);
-
-      if (name) {
-        await updateProfile(result.user, { displayName: name });
-      }
-
-      // Save user to database
-      try {
-        const userRef = doc(db, 'users', result.user.uid);
-        await setDoc(userRef, {
-          name: name || '',
-          email: email,
-          createdAt: new Date().toISOString()
-        }, { merge: true });
-      } catch (dbErr) {
-        console.error('Failed to save user to database:', dbErr);
-      }
-
-      setCurrentUser({ ...result.user, displayName: name });
-      setAuthInitialized(true);
-      return result;
-    } catch (error) {
-      throw error;
+      const userRef = doc(db, 'users', result.user.uid);
+      await setDoc(userRef, {
+        name: '',
+        email: email,
+        createdAt: new Date().toISOString()
+      }, { merge: true });
+    } catch (dbErr) {
+      console.error('Failed to save user to database:', dbErr);
     }
-  };
+
+    setCurrentUser(result.user);
+    setAuthInitialized(true);
+    return result;
+  } catch (error) {
+    throw error;
+  }
+};
 
   const login = async (email, password) => {
     await initializeAuth();
